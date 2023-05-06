@@ -1,0 +1,600 @@
+fileFormatVersion: 2
+guid: 939599e8f72913d4fa4590099c3106b0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8852556918395177194
+    second: tiles set katower_0
+  - first:
+      213: -3359533894749463611
+    second: tiles set katower_1
+  - first:
+      213: -5017193194605774942
+    second: tiles set katower_2
+  - first:
+      213: -4957366105398019652
+    second: tiles set katower_3
+  - first:
+      213: -5524524982814803354
+    second: tiles set katower_4
+  - first:
+      213: -6337660585293468534
+    second: tiles set katower_5
+  - first:
+      213: -4639324427281034265
+    second: tiles set katower_6
+  - first:
+      213: -3853228702132000009
+    second: tiles set katower_7
+  - first:
+      213: 8888912985057333261
+    second: tiles set katower_8
+  - first:
+      213: 8730012740929491339
+    second: tiles set katower_9
+  - first:
+      213: 6255841740309019524
+    second: tiles set katower_10
+  - first:
+      213: -3097452746457266685
+    second: tiles set katower_11
+  - first:
+      213: 271964039366201234
+    second: tiles set katower_12
+  - first:
+      213: -5271964070079038672
+    second: tiles set katower_13
+  - first:
+      213: 1042578225710720280
+    second: tiles set katower_14
+  - first:
+      213: -6253140351500644554
+    second: tiles set katower_15
+  - first:
+      213: -627407812918568276
+    second: tiles set katower_16
+  - first:
+      213: -1531490514068454439
+    second: tiles set katower_17
+  - first:
+      213: 5562271628666141990
+    second: tiles set katower_18
+  - first:
+      213: 6643723052312479157
+    second: tiles set katower_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 700
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tiles set katower_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1815
+        width: 611
+        height: 596
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 617f025b266652580800000000000000
+      internalID: -8852556918395177194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_1
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1803
+        width: 599
+        height: 619
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cbd298e8b98061d0800000000000000
+      internalID: -3359533894749463611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_2
+      rect:
+        serializedVersion: 2
+        x: 1813
+        y: 1804
+        width: 618
+        height: 612
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7f30a2f595f5ab0800000000000000
+      internalID: -5017193194605774942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_3
+      rect:
+        serializedVersion: 2
+        x: 4814
+        y: 1790
+        width: 619
+        height: 627
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9703adac5e33bb0800000000000000
+      internalID: -4957366105398019652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_4
+      rect:
+        serializedVersion: 2
+        x: 2996
+        y: 1796
+        width: 634
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a7d8e5cc1f453b0800000000000000
+      internalID: -5524524982814803354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_5
+      rect:
+        serializedVersion: 2
+        x: 3885
+        y: 1803
+        width: 607
+        height: 625
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8ca69aa64b1c08a0800000000000000
+      internalID: -6337660585293468534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_6
+      rect:
+        serializedVersion: 2
+        x: 5971
+        y: 1757
+        width: 695
+        height: 654
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e31f1a730fcd9fb0800000000000000
+      internalID: -4639324427281034265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 913
+        width: 623
+        height: 606
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fa251329e4968ac0800000000000000
+      internalID: -3853228702132000009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_8
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 910
+        width: 616
+        height: 610
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0013b1b343cb5b70800000000000000
+      internalID: 8888912985057333261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_9
+      rect:
+        serializedVersion: 2
+        x: 1811
+        y: 881
+        width: 622
+        height: 605
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b819cb3955c372970800000000000000
+      internalID: 8730012740929491339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_10
+      rect:
+        serializedVersion: 2
+        x: 2995
+        y: 887
+        width: 616
+        height: 636
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b3e2efae631d650800000000000000
+      internalID: 6255841740309019524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_11
+      rect:
+        serializedVersion: 2
+        x: 3913
+        y: 889
+        width: 633
+        height: 637
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3064bda5323a305d0800000000000000
+      internalID: -3097452746457266685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_12
+      rect:
+        serializedVersion: 2
+        x: 4812
+        y: 891
+        width: 619
+        height: 641
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f4a165ad536c300800000000000000
+      internalID: 271964039366201234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_13
+      rect:
+        serializedVersion: 2
+        x: 6005
+        y: 866
+        width: 629
+        height: 631
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03bf05e3c9836d6b0800000000000000
+      internalID: -5271964070079038672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 619
+        height: 614
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8156b0a5f5bf77e00800000000000000
+      internalID: 1042578225710720280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_15
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 4
+        width: 601
+        height: 618
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63f842a1bf16839a0800000000000000
+      internalID: -6253140351500644554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_16
+      rect:
+        serializedVersion: 2
+        x: 1815
+        y: 24
+        width: 615
+        height: 598
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa1fa51beffa47f0800000000000000
+      internalID: -627407812918568276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_17
+      rect:
+        serializedVersion: 2
+        x: 2977
+        y: 0
+        width: 650
+        height: 618
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3c11cdd7d0fbae0800000000000000
+      internalID: -1531490514068454439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_18
+      rect:
+        serializedVersion: 2
+        x: 3908
+        y: 0
+        width: 647
+        height: 623
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62df0ea7398213d40800000000000000
+      internalID: 5562271628666141990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles set katower_19
+      rect:
+        serializedVersion: 2
+        x: 4780
+        y: 0
+        width: 638
+        height: 618
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b5c8278aee333c50800000000000000
+      internalID: 6643723052312479157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
