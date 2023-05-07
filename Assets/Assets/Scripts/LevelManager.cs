@@ -8,7 +8,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private CameraMovement cameraMovement;
     [SerializeField] private Transform map;
     private Point blueSpawn, redSpawn;
-    public Spawn BluePortal;
+    public Spawn BluePortal { get; set; }
     [SerializeField] private GameObject bluePortalPrefab;
     [SerializeField] private GameObject redPortalPrefab;
     private Point mapSize;
@@ -17,7 +17,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         get
         {
-            if(Path == null)
+            if(path == null)
             {
                 GeneratePath();
             }
@@ -90,7 +90,7 @@ public class LevelManager : Singleton<LevelManager>
         BluePortal = tmp.GetComponent<Spawn>();
         BluePortal.name = "BluePortal";
 
-        redSpawn = new Point(25, 10);
+        redSpawn = new Point(5, 5);
         Instantiate(redPortalPrefab, Tiles[redSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
     }
     public bool InBounds(Point position)

@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     private int currency;
     [SerializeField] private Text currencyText;
 
-    public PoolObject Pool { get; set; }
+    public ObjectPool Pool { get; set; }
 
     public int Currency
     {
@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void Awake()
     {
-        Pool = GetComponent<PoolObject>();
+        Pool = GetComponent<ObjectPool>();
     }
     private void Start()
     {

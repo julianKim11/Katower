@@ -17,14 +17,12 @@ public class Enemy : MonoBehaviour
     {
         transform.position = LevelManager.Instance.BluePortal.transform.position;
 
-        StartCoroutine(Scale(new Vector3(0.1f, 0.1f), new Vector3(1, 1)));
+        StartCoroutine(Scale(new Vector3(0.1f, 0.1f), new Vector3(1, 1), false));
 
         SetPath(LevelManager.Instance.Path);
     }
-    public IEnumerator Scale(Vector3 from, Vector3 to)
+    public IEnumerator Scale(Vector3 from, Vector3 to, bool remove)
     {
-        IsActive = false;
-
         float progress = 0;
 
         while(progress <= 1)
@@ -36,6 +34,11 @@ public class Enemy : MonoBehaviour
         transform.localScale = to;
 
         IsActive = true;
+
+        if (remove)
+        {
+            Release();
+        }
     }
     private void Move()
     {
@@ -61,5 +64,17 @@ public class Enemy : MonoBehaviour
             GridPosition = path.Peek().GridPosition;
             destination = path.Pop().WorldPosition;
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "RedPortal")
+        {
+            StartCoroutine(Scale(new Vector3(1, 1), new Vector3(0.1f, 0.1f), true));
+        }
+    }
+    private void Release()
+    {
+        IsActive = false;
+        GameManager.Instance.Pool.ReleaseObject(gameObject);
     }
 }
