@@ -70,10 +70,9 @@ public class LevelManager : Singleton<LevelManager>
 
         TileScript newTile = Instantiate(tilePrefabs[tileIndex]).GetComponent<TileScript>();
 
-        newTile.Setup(new Point(x, y), new Vector3(worldStart.x + TileSize * x, worldStart.y - TileSize * y, 0), map);
+        float tileSize = TileSize - 0.01f;
 
-        //Tiles.Add(new Point(x, y), newTile);
-
+        newTile.Setup(new Point(x, y), new Vector3(worldStart.x + tileSize * x, worldStart.y - tileSize * y, 0), map);
     }
     private string[] ReadLevelText()
     {

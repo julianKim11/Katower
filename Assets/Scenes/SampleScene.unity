@@ -404,7 +404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 206091322}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 514127479}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &206091322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,7 +1091,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 764666915}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 514127479}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &764666915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1689,9 +1713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 5073594430667878283, guid: a3836dc221f58e441a6ce16253468d05, type: 3}
-  - {fileID: 8698643376953346009, guid: 97defab71bafd0944ad09af136e8cdcc, type: 3}
-  - {fileID: 1026142246952274122, guid: b293e63ec61211b4fb0c12e75b5cc564, type: 3}
+  - {fileID: 5941418986709060133, guid: 47847ad1a6fbe40489944a19de737f07, type: 3}
+  - {fileID: 3682999910140838026, guid: 9ddbef6ebc909a24784e9715bce7102f, type: 3}
+  - {fileID: 2861272079135664277, guid: 4c5ae9aa23a74f84f87919e4654833ec, type: 3}
   cameraMovement: {fileID: 519420030}
   map: {fileID: 495042172}
   bluePortalPrefab: {fileID: 4493674156625980990, guid: 77de28eaa5e0e2b4783df8a345423f6f, type: 3}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
@@ -46,7 +47,12 @@ public class GameManager : Singleton<GameManager>
         set
         {
             this.lives = value;
-            livesText.text = value.ToString();
+            if (lives <= 0)
+            {
+                this.lives = 0;
+                GameOver();
+            }
+            livesText.text = lives.ToString();
         }
     }
     private void Awake()
@@ -55,7 +61,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void Start()
     {
-        Lives = 5;
+        Lives = 3;
         Currency = 100;
     }
     private void Update()
@@ -120,7 +126,8 @@ public class GameManager : Singleton<GameManager>
     public void RemoveEnemy(Enemy enemy)
     {
         activeEnemies.Remove(enemy);
-        if (!waveActive)
+
+        if (!waveActive && !gameOver)
         {
             waveBtn.SetActive(true);
         }
@@ -132,5 +139,15 @@ public class GameManager : Singleton<GameManager>
             gameOver = true;
             gameOverMenu.SetActive(true);
         }
+    }
+    public void Restart()
+    {
+        Time.timeScale = 1;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
