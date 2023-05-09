@@ -11,7 +11,7 @@ public class TileScript : MonoBehaviour
     private Color32 emptyColor = new Color32(96, 255, 90, 255);
     //private SpriteRenderer spriteRenderer;
     private SpriteRenderer spriteRenderer;
-    
+    private Tower myTower;
     public bool WalkAble { get; set; }
     public bool Debugging { get; set; }
     public Vector2 WorldPosition
@@ -49,8 +49,18 @@ public class TileScript : MonoBehaviour
             {
                 PlaceTower();
             }
-            //Debug.Log(GridPosition.x + ", " + GridPosition.y);
+        } else if (!EventSystem.current.IsPointerOverGameObject() && GameManager.Instance.ClickedBtn == null && Input.GetMouseButtonDown(0))
+        {
+            if (myTower != null)
+            {
+                GameManager.Instance.SelectTower(myTower);
+            }
+            else
+            {
+                GameManager.Instance.DeselectTower();
+            }
         }
+
     }
     private void OnMouseExit()
     {
@@ -66,6 +76,8 @@ public class TileScript : MonoBehaviour
         tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.y;
 
         tower.transform.SetParent(transform);
+
+        this.myTower = tower.transform.GetChild(0).GetComponent<Tower>();
 
         IsEmpty = false;
         ColorTile(Color.white);

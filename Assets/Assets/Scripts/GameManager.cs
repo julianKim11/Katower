@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     private bool gameOver = false;
     public ObjectPool Pool { get; set; }
     [SerializeField] private GameObject gameOverMenu;
+    private Tower selectedTower;
     List<Enemy> activeEnemies = new List<Enemy>();
     public bool waveActive
     {
@@ -84,6 +85,23 @@ public class GameManager : Singleton<GameManager>
             Hover.Instance.Deactivate();
         }    
     }
+    public void SelectTower(Tower tower)
+    {
+        if(selectedTower != null)
+        {
+            selectedTower.Select();
+        }
+        selectedTower = tower;
+        selectedTower.Select();
+    }
+    public void DeselectTower()
+    {
+        if(selectedTower != null)
+        {
+            selectedTower.Select();
+        }
+        selectedTower = null;
+    }
     private void HandleEscape()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -98,7 +116,6 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(SpawnWave());
         waveBtn.SetActive(false);
     }
-
     private IEnumerator SpawnWave()
     {
         LevelManager.Instance.GeneratePath();
