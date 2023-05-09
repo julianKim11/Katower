@@ -1,7 +1,46 @@
 fileFormatVersion: 2
 guid: 2dbba387f859ab240b197520b30b2f2f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5420230794085020595
+    second: Luchador lvl 1_0
+  - first:
+      213: -5413625996824347809
+    second: Luchador lvl 1_1
+  - first:
+      213: 8500202025958674625
+    second: Luchador lvl 1_2
+  - first:
+      213: 6907930891377283217
+    second: Luchador lvl 1_3
+  - first:
+      213: 3406443837662372652
+    second: Luchador lvl 1_4
+  - first:
+      213: -6295187677524605681
+    second: Luchador lvl 1_5
+  - first:
+      213: -1439532516281727348
+    second: Luchador lvl 1_6
+  - first:
+      213: -5927083657221863252
+    second: Luchador lvl 1_7
+  - first:
+      213: 1676498415794495761
+    second: Luchador lvl 1_8
+  - first:
+      213: 3208028333250790557
+    second: Luchador lvl 1_9
+  - first:
+      213: 5898485404414282782
+    second: Luchador lvl 1_10
+  - first:
+      213: 1886369615231855736
+    second: Luchador lvl 1_11
+  - first:
+      213: 4469560587377336867
+    second: Luchador lvl 1_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +80,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,9 +114,306 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Luchador lvl 1_0
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 710
+        width: 270
+        height: 232
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b3321a8037883b40800000000000000
+      internalID: 5420230794085020595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_1
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 722
+        width: 284
+        height: 240
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5bf678a6dfeed4b0800000000000000
+      internalID: -5413625996824347809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 721
+        width: 306
+        height: 240
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c09254e4b8c6f570800000000000000
+      internalID: 8500202025958674625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_3
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 726
+        width: 338
+        height: 240
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1909d71cb86eddf50800000000000000
+      internalID: 6907930891377283217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_4
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 714
+        width: 298
+        height: 239
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c232f2b4f9e164f20800000000000000
+      internalID: 3406443837662372652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_5
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 353
+        width: 271
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05cabe192003a8a0800000000000000
+      internalID: -6295187677524605681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_6
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 365
+        width: 284
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c86476cadc0c50ce0800000000000000
+      internalID: -1439532516281727348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_7
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 364
+        width: 303
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca8844911d4cebda0800000000000000
+      internalID: -5927083657221863252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_8
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 369
+        width: 339
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111afeb3d6e144710800000000000000
+      internalID: 1676498415794495761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_9
+      rect:
+        serializedVersion: 2
+        x: 1493
+        y: 357
+        width: 298
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d944dc0b5c4358c20800000000000000
+      internalID: 3208028333250790557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_10
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 87
+        width: 217
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c80fa4931abd150800000000000000
+      internalID: 5898485404414282782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_11
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 99
+        width: 162
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c2cfeab2bbd2a10800000000000000
+      internalID: 1886369615231855736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Luchador lvl 1_12
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 51
+        width: 177
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32266b86ca1170e30800000000000000
+      internalID: 4469560587377336867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

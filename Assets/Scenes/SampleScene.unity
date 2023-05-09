@@ -1571,7 +1571,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4257003179854827872, guid: dd36080efe0f00c4d81bc07a01c9160f, type: 3}
+  m_Sprite: {fileID: 5420230794085020595, guid: 2dbba387f859ab240b197520b30b2f2f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1601,8 +1601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2710720375e9bdd4aac0f792ca3ee66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrebaf: {fileID: 8170390414955460874, guid: 30eeb004100f0e94b87c8aee0d1f7216, type: 3}
-  sprite: {fileID: -4257003179854827872, guid: 4da343dfa972b09428a00878e81c9802, type: 3}
+  towerPrebaf: {fileID: 5423543428661183525, guid: cfd3fa975ad4cfb46ae58bdf5f1df316, type: 3}
+  sprite: {fileID: 5420230794085020595, guid: 2dbba387f859ab240b197520b30b2f2f, type: 3}
   price: 10
   priceText: {fileID: 776221772}
 --- !u!1 &933415478
