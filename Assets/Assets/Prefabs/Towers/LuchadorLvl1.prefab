@@ -196,3 +196,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: LuchadorProjectile
+  attackCooldown: 1
