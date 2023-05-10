@@ -195,3 +195,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea73ba906f9bb34f943120b4ecaf2cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileType: LuchadorProjectile
