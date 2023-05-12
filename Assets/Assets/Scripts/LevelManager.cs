@@ -13,6 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private GameObject redPortalPrefab;
     private Point mapSize;
     private Stack<Node> path;
+    //public static Stack<Node> fixedPath = new Stack<Node>();
     public Stack<Node> Path
     {
         get
@@ -84,12 +85,12 @@ public class LevelManager : Singleton<LevelManager>
     }
     private void SpawnPortals()
     {
-        blueSpawn = new Point(1, 2);
+        blueSpawn = new Point(2, 2);
         GameObject tmp = Instantiate(bluePortalPrefab, Tiles[blueSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
         BluePortal = tmp.GetComponent<Spawn>();
         BluePortal.name = "BluePortal";
 
-        redSpawn = new Point(10, 5);
+        redSpawn = new Point(2, 8);//18,2
         Instantiate(redPortalPrefab, Tiles[redSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
     }
     public bool InBounds(Point position)
@@ -98,6 +99,17 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void GeneratePath()
     {
-        path = Astar.GetPath(blueSpawn, redSpawn);
+        path = Astar.GetFixedPath();
     }
+    //public static bool IsNodeInFixedPath(TileScript tile)
+    //{
+    //    foreach(TileScript fixedTile in fixedPath)
+    //    {
+    //        if(tile == fixedTile)
+    //        {
+    //            return true;
+    //        }
+    //    }
+    //    return false;
+    //}
 }

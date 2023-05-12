@@ -6,9 +6,9 @@ using UnityEngine.EventSystems;
 public class TileScript : MonoBehaviour
 {
     public Point GridPosition { get; private set; }
-    public bool IsEmpty { get; private set; }
-    private Color32 fullColor = new Color32(255, 118, 118, 255);
-    private Color32 emptyColor = new Color32(96, 255, 90, 255);
+    public bool IsEmpty { get; set; }
+    private Color32 fullColor = new Color32(255, 118, 118, 255);//rojo
+    private Color32 emptyColor = new Color32(96, 255, 90, 255);//verde
     //private SpriteRenderer spriteRenderer;
     private SpriteRenderer spriteRenderer;
     private Tower myTower;
@@ -69,21 +69,21 @@ public class TileScript : MonoBehaviour
             ColorTile(Color.white);
         }
     }
+   
     private void PlaceTower()
     {
-        //Debug.Log("Place Tower");
-        GameObject tower = (GameObject)Instantiate(GameManager.Instance.ClickedBtn.TowerPrebaf, transform.position, Quaternion.identity);
-        tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.y;
+            GameObject tower = (GameObject)Instantiate(GameManager.Instance.ClickedBtn.TowerPrebaf, transform.position, Quaternion.identity);
+            tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.y;
 
-        tower.transform.SetParent(transform);
+            tower.transform.SetParent(transform);
 
-        this.myTower = tower.transform.GetChild(0).GetComponent<Tower>();
+            this.myTower = tower.transform.GetChild(0).GetComponent<Tower>();
 
-        IsEmpty = false;
-        ColorTile(Color.white);
-        GameManager.Instance.BuyTower();
+            IsEmpty = false;
+            ColorTile(Color.white);
+            GameManager.Instance.BuyTower();
 
-        WalkAble = false;
+            WalkAble = false;
     }
     private void ColorTile(Color newColor)
     {

@@ -114,8 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileType: LuchadorProjectile
   projectileSpeed: 3
-  damage: 5
-  attackCooldown: 1
+  damage: 50
+  attackCooldown: 1.5
 --- !u!1 &7886061130994763032
 GameObject:
   m_ObjectHideFlags: 0

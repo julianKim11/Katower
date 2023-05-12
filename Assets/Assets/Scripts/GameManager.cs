@@ -7,19 +7,27 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     public TowerBtn ClickedBtn { get; set; }
-    private int health = 15;
+    private int health = 100;
     private int currency;
     private int wave = 0;
+    private int waveQ = 3;
     private int lives;
+    private int enemyIndex;
     [SerializeField] private Text livesText;
     [SerializeField] private Text currencyText;
     [SerializeField] private GameObject waveBtn;
+    [SerializeField] private GameObject startBtn;
+    [SerializeField] private GameObject towerPanel;
+    [SerializeField] private GameObject livesUI;
+    [SerializeField] private GameObject waveUI;
+    [SerializeField] private GameObject currencyUI;
     [SerializeField] private Text waveText;
     private bool gameOver = false;
     public ObjectPool Pool { get; set; }
     [SerializeField] private GameObject gameOverMenu;
     private Tower selectedTower;
     List<Enemy> activeEnemies = new List<Enemy>();
+    
     public bool waveActive
     {
         get
@@ -62,8 +70,8 @@ public class GameManager : Singleton<GameManager>
     }
     private void Start()
     {
-        Lives = 3;
-        Currency = 2000;
+        Lives = 10;
+        Currency = 1500;
     }
     private void Update()
     {
@@ -119,9 +127,34 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator SpawnWave()
     {
         LevelManager.Instance.GeneratePath();
-        for (int i = 0; i < wave; i++)
+        if(wave == 2)
         {
-            int enemyIndex = 0; //Random.Range(0, 3);
+            waveQ = 5;
+            enemyIndex = 0;
+        }
+        if(wave == 3)
+        {
+            waveQ = 6;
+            enemyIndex = 0;
+        }
+        if (wave == 4)
+        {
+            waveQ = 7;
+            enemyIndex = 0;
+        }
+        if (wave == 5)
+        {
+            waveQ = 10;
+            enemyIndex = 0;
+        }
+        if (wave == 6)
+        {
+            waveQ = 1;
+            enemyIndex = 1;
+        }
+        for (int i = 0; i < waveQ; i++)
+        {
+            //int enemyIndex = 0; //Random.Range(0, 3);
 
             string type = string.Empty;
 
@@ -130,18 +163,20 @@ public class GameManager : Singleton<GameManager>
                 case 0:
                     type = "Rat";
                     break;
-
+                case 1:
+                    type = "BossRat";
+                    break;
             }
 
             Enemy enemy = Pool.GetObject(type).GetComponent<Enemy>();
             enemy.Spawn(health);
-            //if(wave % 3 == 0)
-            //{
-            //    health += 5;
-            //}
+            if(wave == 6)
+            {
+                health += 550;
+            }
             activeEnemies.Add(enemy);
 
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(1.2f);
         }
     }
     public void RemoveEnemy(Enemy enemy)
@@ -170,5 +205,16 @@ public class GameManager : Singleton<GameManager>
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void StartGame()
+    {
+
+        LevelManager.Instance.GeneratePath();
+        startBtn.SetActive(false);
+        waveBtn.SetActive(true);
+        towerPanel.SetActive(true);
+        livesUI.SetActive(true);
+        waveUI.SetActive(true);
+        currencyUI.SetActive(true);
     }
 }

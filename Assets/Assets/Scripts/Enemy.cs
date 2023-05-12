@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
             health.CurrentValue -= damage;
             if(health.CurrentValue <= 0)
             {
-                GameManager.Instance.Currency += 2;
+                GameManager.Instance.Currency += 100;
 
                 //myAnimator.SetTrigger("Die");
 
