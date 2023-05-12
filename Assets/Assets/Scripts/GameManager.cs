@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     public TowerBtn ClickedBtn { get; set; }
-
+    private int health = 15;
     private int currency;
     private int wave = 0;
     private int lives;
@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
         set
         {
             this.currency = value;
-            this.currencyText.text = "<color=lime>$</color>" + value.ToString();
+            this.currencyText.text = value.ToString();
         }
     }
     public int Lives
@@ -63,7 +63,7 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         Lives = 3;
-        Currency = 100;
+        Currency = 2000;
     }
     private void Update()
     {
@@ -134,7 +134,11 @@ public class GameManager : Singleton<GameManager>
             }
 
             Enemy enemy = Pool.GetObject(type).GetComponent<Enemy>();
-            enemy.Spawn();
+            enemy.Spawn(health);
+            //if(wave % 3 == 0)
+            //{
+            //    health += 5;
+            //}
             activeEnemies.Add(enemy);
 
             yield return new WaitForSeconds(2.5f);
@@ -161,10 +165,10 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 1;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
     }
-    public void QuitGame()
+    public void MainMenu()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 }
