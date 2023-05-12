@@ -8,19 +8,19 @@ public class GameManager : Singleton<GameManager>
 {
     public TowerBtn ClickedBtn { get; set; }
     private int health = 100;
+    private int bossHealth = 550;
     private int currency;
     private int wave = 0;
     private int waveQ = 3;
     private int lives;
     private int enemyIndex;
+    private bool completedWave5 = false;
     [SerializeField] private Text livesText;
     [SerializeField] private Text currencyText;
     [SerializeField] private GameObject waveBtn;
     [SerializeField] private GameObject startBtn;
-    [SerializeField] private GameObject towerPanel;
-    [SerializeField] private GameObject livesUI;
-    [SerializeField] private GameObject waveUI;
-    [SerializeField] private GameObject currencyUI;
+    [SerializeField] private GameObject panelShopBtn;
+    [SerializeField] private GameObject panel;
     [SerializeField] private Text waveText;
     private bool gameOver = false;
     private bool winScreen = false;
@@ -61,7 +61,11 @@ public class GameManager : Singleton<GameManager>
             if (lives <= 0)
             {
                 this.lives = 0;
-                GameOver();
+                GameOver();   
+            }
+            else if (completedWave5 && wave > 5)
+            {
+                WinScreen();
             }
             livesText.text = lives.ToString();
         }
@@ -77,6 +81,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void Update()
     {
+        Debug.Log(wave);
         HandleEscape();
     }
     public void PickTower(TowerBtn towerBtn)
@@ -122,9 +127,14 @@ public class GameManager : Singleton<GameManager>
     public void StartWave()
     {
         wave++;
-        waveText.text = string.Format("Wave: <color=lime>{0}</color>", wave);
+        waveText.text = string.Format("Oleada: <color=lime>{0}</color>", wave);
         StartCoroutine(SpawnWave());
         waveBtn.SetActive(false);
+        
+        if(wave > 5 && Lives > 0)
+        {
+            completedWave5 = true;
+        }
     }
     private IEnumerator SpawnWave()
     {
@@ -136,20 +146,15 @@ public class GameManager : Singleton<GameManager>
         }
         if(wave == 3)
         {
-            waveQ = 6;
+            waveQ = 8;
             enemyIndex = 0;
         }
         if (wave == 4)
         {
-            waveQ = 7;
-            enemyIndex = 0;
-        }
-        if (wave == 5)
-        {
             waveQ = 10;
             enemyIndex = 0;
         }
-        if (wave == 6)
+        if (wave == 5)
         {
             waveQ = 1;
             enemyIndex = 1;
@@ -171,10 +176,13 @@ public class GameManager : Singleton<GameManager>
             }
 
             Enemy enemy = Pool.GetObject(type).GetComponent<Enemy>();
-            enemy.Spawn(health);
-            if(wave == 6)
+            if(enemyIndex == 0)
             {
-                health += 550;
+                enemy.Spawn(health);
+            }
+            if(enemyIndex == 1)
+            {
+                enemy.Spawn(bossHealth);
             }
             activeEnemies.Add(enemy);
 
@@ -185,9 +193,16 @@ public class GameManager : Singleton<GameManager>
     {
         activeEnemies.Remove(enemy);
 
-        if (!waveActive && !gameOver || !waveActive && !winScreen)
+        if (!waveActive && !gameOver)
         {
-            waveBtn.SetActive(true);
+            if(wave == 5 && Lives > 0)
+            {
+                WinScreen();
+            }
+            else
+            {
+                waveBtn.SetActive(true);
+            }
         }
     }
     public void GameOver()
@@ -221,9 +236,7 @@ public class GameManager : Singleton<GameManager>
         LevelManager.Instance.GeneratePath();
         startBtn.SetActive(false);
         waveBtn.SetActive(true);
-        towerPanel.SetActive(true);
-        livesUI.SetActive(true);
-        waveUI.SetActive(true);
-        currencyUI.SetActive(true);
+        panelShopBtn.SetActive(true);
+        panel.SetActive(false);
     }
 }

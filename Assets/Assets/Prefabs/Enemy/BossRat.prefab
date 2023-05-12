@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -920002914784994574}
   m_Layer: 0
   m_Name: BossRat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,8 +148,8 @@ MonoBehaviour:
   speed: 1
   health:
     bar: {fileID: 3539380813711436455}
-    maxValue: 0
-    currentValue: 0
+    maxValue: 550
+    currentValue: 550
 --- !u!1001 &1442955663952255439
 PrefabInstance:
   m_ObjectHideFlags: 0
