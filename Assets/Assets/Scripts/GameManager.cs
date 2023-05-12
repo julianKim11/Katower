@@ -23,8 +23,10 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject currencyUI;
     [SerializeField] private Text waveText;
     private bool gameOver = false;
+    private bool winScreen = false;
     public ObjectPool Pool { get; set; }
     [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject winScreenMenu;
     private Tower selectedTower;
     List<Enemy> activeEnemies = new List<Enemy>();
     
@@ -183,7 +185,7 @@ public class GameManager : Singleton<GameManager>
     {
         activeEnemies.Remove(enemy);
 
-        if (!waveActive && !gameOver)
+        if (!waveActive && !gameOver || !waveActive && !winScreen)
         {
             waveBtn.SetActive(true);
         }
@@ -194,6 +196,14 @@ public class GameManager : Singleton<GameManager>
         {
             gameOver = true;
             gameOverMenu.SetActive(true);
+        }
+    }
+    public void WinScreen()
+    {
+        if (!winScreen)
+        {
+            winScreen = true;
+            winScreenMenu.SetActive(true);
         }
     }
     public void Restart()
@@ -208,7 +218,6 @@ public class GameManager : Singleton<GameManager>
     }
     public void StartGame()
     {
-
         LevelManager.Instance.GeneratePath();
         startBtn.SetActive(false);
         waveBtn.SetActive(true);
