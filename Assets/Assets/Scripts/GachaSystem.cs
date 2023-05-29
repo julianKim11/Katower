@@ -1,39 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GachaSystem : MonoBehaviour
 {
     public List<GachaItem> gachaItems;
+    public int moneda = 0; // Variable para controlar las monedas disponibles
+    public Button rollButton; // Referencia al botón "Roll" en la interfaz de usuario
 
     [System.Serializable]
     public class GachaItem
     {
         public string name;
-        public int rarity;
+        public float probability;
         public Sprite sprite;
     }
 
-    public GachaItem GetRandomGachaItem()
+    private void Start()
     {
-        int totalRarity = 0;
-        foreach (GachaItem item in gachaItems)
-        {
-            totalRarity += item.rarity;
-        }
+        rollButton.onClick.AddListener(RollGacha); // Asignar la función RollGacha() al evento onClick del botón "Roll"
+    }
 
-        int randomValue = Random.Range(0, totalRarity);
-
-        int cumulativeRarity = 0;
-        foreach (GachaItem item in gachaItems)
+    public void RollGacha()
+    {
+        if (moneda > 0) // Verificar si hay monedas disponibles para gastar
         {
-            cumulativeRarity += item.rarity;
-            if (cumulativeRarity > randomValue)
+            moneda--; // Gastar una moneda
+
+            float randomValue = Random.value; // Generar un valor aleatorio entre 0 y 1
+
+            float cumulativeProbability = 0f;
+            foreach (GachaItem item in gachaItems)
             {
-                return item;
+                cumulativeProbability += item.probability;
+
+                if (randomValue <= cumulativeProbability)
+                {
+                    Debug.Log("¡Has obtenido la torre: " + item.name + "!");
+                    // Aquí puedes realizar la acción correspondiente a obtener la torre, como instanciar el objeto en el juego, mostrar su imagen, etc.
+                    break;
+                }
             }
         }
-
-        return null;
+        else
+        {
+            Debug.Log("No tienes suficientes monedas.");
+        }
     }
 }
+

@@ -1,49 +1,37 @@
 fileFormatVersion: 2
-guid: 22f852ac39617f544b39a5e88f973853
+guid: 9a0dffd280453be4b8c6ce5247aa75eb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1847098265776118685
-    second: Trampero lvl1_0
+      213: 6816408423850577241
+    second: Enamoradizo lvl1_0
   - first:
-      213: -3765646505749344383
-    second: Trampero lvl1_1
+      213: -207356921561169130
+    second: Enamoradizo lvl1_1
   - first:
-      213: 3096806854453790641
-    second: Trampero lvl1_2
+      213: -2844973611183851983
+    second: Enamoradizo lvl1_2
   - first:
-      213: -5574884971660063246
-    second: Trampero lvl1_3
+      213: 4618093145710825361
+    second: Enamoradizo lvl1_3
   - first:
-      213: 8856157454562271571
-    second: Trampero lvl1_4
+      213: -83591193713121915
+    second: Enamoradizo lvl1_4
   - first:
-      213: 656582763010002464
-    second: Trampero lvl1_5
+      213: 3438881476749555621
+    second: Enamoradizo lvl1_5
   - first:
-      213: -1925260417082726945
-    second: Trampero lvl1_6
+      213: -907901836333309900
+    second: Enamoradizo lvl1_7
   - first:
-      213: 520033735320367034
-    second: Trampero lvl1_7
+      213: -3521698257891464139
+    second: Enamoradizo lvl1_8
   - first:
-      213: -891103564228178827
-    second: Trampero lvl1_8
+      213: 2301125109019999310
+    second: Enamoradizo lvl1_9
   - first:
-      213: -1858041185194897761
-    second: Trampero lvl1_9
-  - first:
-      213: 5867361826719748239
-    second: Trampero lvl1_10
-  - first:
-      213: 1117184102378494916
-    second: Trampero lvl1_11
-  - first:
-      213: -951154349463082297
-    second: Trampero lvl1_12
-  - first:
-      213: 8986519668131774721
-    second: Trampero lvl1_13
+      213: -389067603970444730
+    second: Enamoradizo lvl1_10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,181 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Trampero lvl1_0
+      name: Enamoradizo lvl1_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 762
-        width: 288
-        height: 224
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 364ac23e9e9cd56e0800000000000000
-      internalID: -1847098265776118685
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_1
-      rect:
-        serializedVersion: 2
-        x: 324
-        y: 759
-        width: 282
-        height: 242
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18f8e1b447cbdbbc0800000000000000
-      internalID: -3765646505749344383
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_2
-      rect:
-        serializedVersion: 2
-        x: 633
-        y: 768
-        width: 275
-        height: 259
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b786b13d611afa20800000000000000
-      internalID: 3096806854453790641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_3
-      rect:
-        serializedVersion: 2
-        x: 967
-        y: 766
-        width: 279
-        height: 248
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2fdc980c7a702a2b0800000000000000
-      internalID: -5574884971660063246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_4
-      rect:
-        serializedVersion: 2
-        x: 1294
-        y: 762
-        width: 298
-        height: 259
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 351ac12784467ea70800000000000000
-      internalID: 8856157454562271571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_5
-      rect:
-        serializedVersion: 2
-        x: 1597
-        y: 759
-        width: 289
-        height: 260
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02e0bd25b86ac1900800000000000000
-      internalID: 656582763010002464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_6
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 448
-        width: 288
-        height: 224
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd5e9a3e9d91845e0800000000000000
-      internalID: -1925260417082726945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_7
-      rect:
-        serializedVersion: 2
-        x: 325
-        y: 442
-        width: 288
-        height: 207
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abf6df05de7873700800000000000000
-      internalID: 520033735320367034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_8
-      rect:
-        serializedVersion: 2
-        x: 646
-        y: 442
+        x: 131
+        y: 672
         width: 287
-        height: 231
+        height: 256
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57c4814970a22a3f0800000000000000
-      internalID: -891103564228178827
+      spriteID: 95d089bb85fb89e50800000000000000
+      internalID: 6816408423850577241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trampero lvl1_9
+      name: Enamoradizo lvl1_1
       rect:
         serializedVersion: 2
-        x: 960
-        y: 441
-        width: 299
-        height: 241
+        x: 464
+        y: 664
+        width: 285
+        height: 273
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -348,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9e896ae269e636e0800000000000000
-      internalID: -1858041185194897761
+      spriteID: 613c0ac7af15f1df0800000000000000
+      internalID: -207356921561169130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trampero lvl1_10
+      name: Enamoradizo lvl1_2
       rect:
         serializedVersion: 2
-        x: 105
-        y: 130
-        width: 255
-        height: 122
+        x: 808
+        y: 668
+        width: 282
+        height: 253
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,20 +189,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f80515aae7e0d6150800000000000000
-      internalID: 5867361826719748239
+      spriteID: 136b60ee29f9488d0800000000000000
+      internalID: -2844973611183851983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trampero lvl1_11
+      name: Enamoradizo lvl1_3
       rect:
         serializedVersion: 2
-        x: 498
-        y: 143
-        width: 255
-        height: 205
+        x: 1123
+        y: 664
+        width: 311
+        height: 273
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -390,50 +210,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cbdbf2a509018f00800000000000000
-      internalID: 1117184102378494916
+      spriteID: 19f82c19f33c61040800000000000000
+      internalID: 4618093145710825361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Trampero lvl1_12
+      name: Enamoradizo lvl1_4
       rect:
         serializedVersion: 2
-        x: 863
-        y: 142
-        width: 372
-        height: 185
+        x: 1502
+        y: 658
+        width: 287
+        height: 255
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585e060904607def0800000000000000
+      internalID: -83591193713121915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enamoradizo lvl1_5
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 276
+        width: 319
+        height: 295
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7f35eab7c59bf20800000000000000
+      internalID: 3438881476749555621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enamoradizo lvl1_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 287
+        width: 287
+        height: 255
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 430ad62171c7663f0800000000000000
+      internalID: -907901836333309900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enamoradizo lvl1_8
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 274
+        width: 284
+        height: 267
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c644cd71a602fc0800000000000000
+      internalID: -3521698257891464139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enamoradizo lvl1_9
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 283
+        width: 281
+        height: 229
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c7ed2481d3fef10800000000000000
+      internalID: 2301125109019999310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enamoradizo lvl1_10
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 50
+        width: 394
+        height: 389
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ca6fa99822dcc2f0800000000000000
-      internalID: -951154349463082297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Trampero lvl1_13
-      rect:
-        serializedVersion: 2
-        x: 1313
-        y: 141
-        width: 360
-        height: 110
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1014e0a860886bc70800000000000000
-      internalID: 8986519668131774721
+      spriteID: 642bab75311c99af0800000000000000
+      internalID: -389067603970444730
       vertices: []
       indices: 
       edges: []
