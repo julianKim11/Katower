@@ -13,6 +13,8 @@ public class ProfileManager : MonoBehaviour
     public InputField profileNameInput;
     public Text currentProfileText;
     public Dropdown profileDropdown;
+    public GameObject yourTowersPanel;
+    public Button yourTowers;
 
     private void Awake()
     {
@@ -31,12 +33,16 @@ public class ProfileManager : MonoBehaviour
     }
     private void Start()
     {
+        yourTowers.onClick.AddListener(OpenYourTowers);
         UpdateProfileDropdownOptions();
         profileDropdown.onValueChanged.AddListener(OnProfileDropdownValueChanged);
     }
+    public void OpenYourTowers()
+    {
+        yourTowersPanel.SetActive(true);
+    }
     public static Profile GetCurrentProfile()
     {
-        Debug.Log("asd");
         return currentProfile;
     }
     private void LoadProfiles()
@@ -111,6 +117,8 @@ public class ProfileManager : MonoBehaviour
             currentProfileText.text = "Perfil actual: " + currentProfile.profileName;
             // Actualizar el cuadro de texto con el perfil actual
             Debug.Log("Perfil cambiado a: " + currentProfile.profileName);
+            GachaSystem gachaSystem = FindObjectOfType<GachaSystem>();
+            gachaSystem.ActivateProfile();
         }
         else
         {
