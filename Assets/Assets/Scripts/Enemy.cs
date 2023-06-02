@@ -6,11 +6,23 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float speed;
     private Stack<Node> path;
+    [SerializeField] private Element elementType;
+    private List<Debuff> debuffs = new List<Debuff>();
+    private List<Debuff> debuffsToRemove = new List<Debuff>();
+    private List<Debuff> newDebuffs = new List<Debuff>();
     public Point GridPosition { get; set; }
     private Vector3 destination;
     public bool IsActive { get; set; }
     [SerializeField] private Stat health;
     private SpriteRenderer spriteRenderer;
+    private int invulnerability = 2;
+    public Element ElementType
+    {
+        get
+        {
+            return elementType;
+        }
+    }
     public bool Alive
     {
         get { return health.CurrentValue > 0; }
@@ -22,10 +34,12 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
+        HandleDebuffs();
         Move();
     }
     public void Spawn(int health)
     {
+        debuffs.Clear();
         transform.position = LevelManager.Instance.BluePortal.transform.position;
 
         this.health.Bar.Reset();
@@ -95,16 +109,22 @@ public class Enemy : MonoBehaviour
     }
     private void Release()
     {
+        debuffs.Clear();
         IsActive = false;
         //GridPosition = LevelManager.Instance.BluePortal;
         GameManager.Instance.RemoveEnemy(this);
         GameManager.Instance.Pool.ReleaseObject(gameObject);
         
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Element damageSource)
     {
         if (IsActive)
         {
+            if(damageSource == elementType)
+            {
+                damage = damage / invulnerability;
+                invulnerability++;
+            }
             health.CurrentValue -= damage;
             if(health.CurrentValue <= 0)
             {
@@ -115,6 +135,38 @@ public class Enemy : MonoBehaviour
                 GetComponent<SpriteRenderer>().sortingOrder--;
                 Release();
             }
+        }
+    }
+    public void AddDebuf(Debuff debuff)
+    {
+        if(!debuffs.Exists(x => x.GetType() == debuff.GetType()))
+        {
+            newDebuffs.Add(debuff);
+        }
+    }
+    public void RemoveDebuff(Debuff debuff)
+    {
+        debuffsToRemove.Add(debuff);
+        
+    }
+    private void HandleDebuffs()
+    {
+        if(newDebuffs.Count > 0)
+        {
+            debuffs.AddRange(newDebuffs);
+            newDebuffs.Clear();
+        }
+
+        foreach (Debuff debuff in debuffsToRemove)
+        {
+            debuffs.Remove(debuff);
+        }
+
+        debuffsToRemove.Clear();
+
+        foreach (Debuff debuff in debuffs)
+        {
+            debuff.Update();
         }
     }
 }

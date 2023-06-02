@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6515323016725512542}
   - component: {fileID: 3173476345966467663}
   - component: {fileID: 4798704743262029494}
-  - component: {fileID: 7779689949379842073}
+  - component: {fileID: 8826427546886219383}
   m_Layer: 2
   m_Name: Circle
   m_TagString: Untagged
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: 0.00000011920929, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7779689949379842073
+--- !u!114 &8826427546886219383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,12 +109,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1266846780539526599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea73ba906f9bb34f943120b4ecaf2cb, type: 3}
+  m_Script: {fileID: 11500000, guid: df9239bce5feef843b01165d3b4b483b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: LuchadorProjectile
   projectileSpeed: 3
   damage: 50
+  debuffDuration: 0
+  proc: 0
   attackCooldown: 1.5
 --- !u!1 &7886061130994763032
 GameObject:
@@ -126,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7886061130994763013}
   - component: {fileID: 7886061130994763034}
-  - component: {fileID: 7886061130994763035}
+  - component: {fileID: 1964712979462282722}
   m_Layer: 0
   m_Name: Luchador lvl 1_0
   m_TagString: Untagged
@@ -200,7 +202,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7886061130994763035
+--- !u!95 &1964712979462282722
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,13 +9,15 @@ public class ProfileManager : MonoBehaviour
     public static ProfileManager instance;
     public static Profile currentProfile;
     private string currentProfileKey = "CurrentProfile";
+    private string lastProfileKey = "LastProfile";
     private Dictionary<string, Profile> profiles = new Dictionary<string, Profile>();
 
     public InputField profileNameInput;
     public Text currentProfileText;
-    public Dropdown profileDropdown;
+    public GameObject ProfilePanel;
     public GameObject yourTowersPanel;
     public Button yourTowers;
+    public Button closeYourTowersPanel;
 
     private void Awake()
     {
@@ -23,6 +26,25 @@ public class ProfileManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             LoadProfiles();
+
+            if (!PlayerPrefs.HasKey(currentProfileKey))
+            {
+                currentProfile = null;
+            }
+            else
+            {
+                if (PlayerPrefs.HasKey(lastProfileKey))
+                {
+                    string lastProfileName = PlayerPrefs.GetString(lastProfileKey);
+                    if (profiles.ContainsKey(lastProfileName))
+                    {
+                        currentProfile = profiles[lastProfileName];
+                        currentProfileText.text = lastProfileName;
+                        Debug.Log("Perfil actual cargado: " + lastProfileName);
+                    }
+                }
+            }
+
             LoadCurrentProfile();
         }
         else
@@ -33,9 +55,12 @@ public class ProfileManager : MonoBehaviour
     }
     private void Start()
     {
+        closeYourTowersPanel.onClick.AddListener(CloseYourTowersPanel);
         yourTowers.onClick.AddListener(OpenYourTowers);
-        UpdateProfileDropdownOptions();
-        profileDropdown.onValueChanged.AddListener(OnProfileDropdownValueChanged);
+    }
+    public void CloseYourTowersPanel()
+    {
+        yourTowersPanel.SetActive(false);
     }
     public void OpenYourTowers()
     {
@@ -43,6 +68,18 @@ public class ProfileManager : MonoBehaviour
     }
     public static Profile GetCurrentProfile()
     {
+        if(instance == null)
+        {
+            Debug.LogWarning("ProfileManager instance is null.");
+            return null;
+        }
+
+        if (currentProfile == null)
+        {
+            Debug.LogWarning("No hay un perfil actual.");
+            return null;
+        }
+
         return currentProfile;
     }
     private void LoadProfiles()
@@ -56,7 +93,27 @@ public class ProfileManager : MonoBehaviour
                 string profileKey = "Profile_" + i.ToString();
                 string profileData = PlayerPrefs.GetString(profileKey);
                 Profile profile = JsonUtility.FromJson<Profile>(profileData);
+
+                string estambreKey = "ProfileEstambre_" + profile.profileName;
+                if (PlayerPrefs.HasKey(estambreKey))
+                {
+                    profile.estambre = PlayerPrefs.GetInt(estambreKey);
+                }
+
+                string acquiredTowersKey = "ProfileAcquiredTowers_" + profile.profileName;
+                string acquiredTowersData = PlayerPrefs.GetString(acquiredTowersKey);
+                List<string> acquiredTowers = JsonUtility.FromJson<List<string>>(acquiredTowersData);
+
+                profile.acquiredTowers = acquiredTowers;
                 profiles.Add(profile.profileName, profile);
+            }
+            if (profiles.Count == 0)
+            {
+                GachaSystem gachaSystem = FindObjectOfType<GachaSystem>();
+                if (gachaSystem != null)
+                {
+                    gachaSystem.DisableRollButton();
+                }
             }
         }
     }
@@ -70,13 +127,29 @@ public class ProfileManager : MonoBehaviour
             if (profiles.ContainsKey(currentProfileName))
             {
                 currentProfile = profiles[currentProfileName];
-                currentProfileText.text = "Perfil actual: " + currentProfileName;
+                currentProfileText.text = currentProfileName;
                 Debug.Log("Perfil actual cargado: " + currentProfileName);
+
+                GachaSystem gachaSystem = FindObjectOfType<GachaSystem>();
+                if (gachaSystem != null)
+                {
+                    gachaSystem.ActivateProfile();
+                    gachaSystem.UpdateUI();
+                    gachaSystem.UpdateTowerUI();
+                }
             }
         }
         else
         {
             currentProfileText.text = "Perfil actual: Ninguno";
+
+            // Deshabilitar el botón "Roll" y restablecer las torres a 0
+            GachaSystem gachaSystem = FindObjectOfType<GachaSystem>();
+            if (gachaSystem != null)
+            {
+                gachaSystem.DisableRollButton();
+                gachaSystem.ResetTowerCounts();
+            }
         }
     }
 
@@ -91,9 +164,15 @@ public class ProfileManager : MonoBehaviour
                 Profile newProfile = new Profile(newProfileName);
                 profiles.Add(newProfileName, newProfile);
                 SaveProfiles();
-                SwitchProfile(newProfileName);
+                //SwitchProfile(newProfileName);
+                currentProfile = newProfile;
+                currentProfileText.text = newProfile.profileName;
+                FindObjectOfType<GachaSystem>().ActivateProfile();
+
+                ProfilePanel.SetActive(false);
                 Debug.Log("Perfil creado: " + newProfileName);
-                UpdateProfileDropdownOptions();
+
+                PlayerPrefs.SetString(lastProfileKey, newProfileName);
             }
             else
             {
@@ -107,44 +186,61 @@ public class ProfileManager : MonoBehaviour
     }
 
 
-    public void SwitchProfile(string profileName)
-    {
-        // Cambiar al perfil seleccionado
-        if (profiles.ContainsKey(profileName))
-        {
-            currentProfile = profiles[profileName];
-            PlayerPrefs.SetString(currentProfileKey, currentProfile.profileName);
-            currentProfileText.text = "Perfil actual: " + currentProfile.profileName;
-            // Actualizar el cuadro de texto con el perfil actual
-            Debug.Log("Perfil cambiado a: " + currentProfile.profileName);
-            GachaSystem gachaSystem = FindObjectOfType<GachaSystem>();
-            gachaSystem.ActivateProfile();
-        }
-        else
-        {
-            Debug.LogWarning("No se encontró el perfil: " + profileName);
-        }
-    }
+    //public void SwitchProfile(string profileName)
+    //{
+    //    // Cambiar al perfil seleccionado
+    //    if (profiles.ContainsKey(profileName))
+    //    {
+    //        currentProfile = profiles[profileName];
+    //        PlayerPrefs.SetString(currentProfileKey, currentProfile.profileName);
+    //        currentProfileText.text = "Perfil actual: " + currentProfile.profileName;
+    //        // Actualizar el cuadro de texto con el perfil actual
+    //        Debug.Log("Perfil cambiado a: " + currentProfile.profileName);
+    //        GachaSystem gachaSystem = FindObjectOfType<GachaSystem>();
+    //        gachaSystem.ActivateProfile();
+    //        if (gachaSystem != null)
+    //        {
+    //            gachaSystem.towerCount.Clear();
+    //            gachaSystem.towerCount["Luchador"] = currentProfile.luchadorCount;
+    //            gachaSystem.towerCount["Enamorado"] = currentProfile.enamoradoCount;
+    //            gachaSystem.towerCount["Trampero"] = currentProfile.tramperoCount;
+    //            gachaSystem.UpdateTowerUI();
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("No se encontró el perfil: " + profileName);
+    //    }
+    //}
 
 
     private void SaveProfiles()
     {
-        for (int i = 0; i < profiles.Count; i++)
-        {
-            string profileKey = "Profile_" + i.ToString();
-            string profileData = PlayerPrefs.GetString(profileKey);
-            Debug.Log("PlayerPrefs Key: " + profileKey + ", Value: " + profileData);
-        }
+        //for (int i = 0; i < profiles.Count; i++)
+        //{
+        //    string profileKey = "Profile_" + i.ToString();
+        //    string profileData = PlayerPrefs.GetString(profileKey);
+        //    Debug.Log("PlayerPrefs Key: " + profileKey + ", Value: " + profileData);
+        //}
         // Guardar perfiles en PlayerPrefs
         PlayerPrefs.SetInt("ProfileCount", profiles.Count);
+
         int index = 0;
+
         foreach (KeyValuePair<string, Profile> kvp in profiles)
         {
             string profileKey = "Profile_" + index.ToString();
             string profileData = JsonUtility.ToJson(kvp.Value);
             PlayerPrefs.SetString(profileKey, profileData);
+
+            string estambreKey = "ProfileEstambre_" + kvp.Value.profileName;
+            PlayerPrefs.SetInt(estambreKey, kvp.Value.estambre);
+
+            string acquiredTowersKey = "ProfileAcquiredTowers_" + kvp.Value.profileName;
+            string acquiredTowersData = JsonUtility.ToJson(kvp.Value.acquiredTowers);
+            PlayerPrefs.SetString(acquiredTowersKey, acquiredTowersData);
+
             index++;
-            
         }
         PlayerPrefs.Save();
         
@@ -155,20 +251,34 @@ public class ProfileManager : MonoBehaviour
     {
         if (currentProfile != null)
         {
+            GachaSystem gachaSystem = FindObjectOfType<GachaSystem>();
             string profileToDelete = currentProfile.profileName;
             profiles.Remove(profileToDelete);
             currentProfile = null;
             PlayerPrefs.DeleteKey(currentProfileKey);
             SaveProfiles();
+            gachaSystem.DisableRollButton();
+
+            if (gachaSystem != null)
+            {
+                gachaSystem.ResetTowerCounts();
+            }
+
+            if(MainManager.instance.estambre != 0)
+            {
+                MainManager.instance.estambre = 0;
+            }
+
             // Actualizar el cuadro de texto con un mensaje adecuado
             currentProfileText.text = "Perfil actual: Ninguno";
             Debug.Log("Perfil borrado.");
-            UpdateProfileDropdownOptions();
-            if(profileDropdown.options.Count > 0)
+           
+            if (profiles.Count == 0)
             {
-                profileDropdown.value = 0;
-                profileDropdown.RefreshShownValue();
-                SwitchProfile(profileDropdown.options[0].text);
+                if(gachaSystem != null)
+                {
+                    gachaSystem.DisableRollButton();
+                }
             }
         }
         else
@@ -176,30 +286,26 @@ public class ProfileManager : MonoBehaviour
             Debug.LogWarning("No hay un perfil actual para borrar.");
         }
     }
-    private void UpdateProfileDropdownOptions()
-    {
-        profileDropdown.ClearOptions();
-        List<string> profileNames = new List<string>(profiles.Keys);
-        profileDropdown.AddOptions(profileNames);
-    }
-
-    public void OnProfileDropdownValueChanged(int index)
-    {
-        string selectedProfileName = profileDropdown.options[index].text;
-        SwitchProfile(selectedProfileName);
-    }
-
 }
 
 [System.Serializable]
 public class Profile
 {
-    public string profileName;
+
+    [JsonProperty("profileName")]public string profileName;
+    public int luchadorCount;
+    public int tramperoCount;
+    public int enamoradoCount;
+    public List<string> acquiredTowers;
+    public int estambre;
     // Agrega los datos que deseas guardar para cada perfil
 
     public Profile(string name)
     {
         profileName = name;
+        luchadorCount = 0;
+        enamoradoCount = 0;
+        tramperoCount = 0;
         // Inicializa los datos de perfil según tus necesidades
     }
 }

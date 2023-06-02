@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     private Tower parent;
     private Enemy target;
+    private Element elementType;
     private void Update()
     {
         MoveToTarget();
@@ -14,6 +15,7 @@ public class Projectile : MonoBehaviour
     {
         this.target = parent.Target;
         this.parent = parent;
+        this.elementType = parent.ElementType;
     }
     public void MoveToTarget()
     {
@@ -32,15 +34,29 @@ public class Projectile : MonoBehaviour
             GameManager.Instance.Pool.ReleaseObject(gameObject);
         }
     }
+
+    private void ApplyDebuff()
+    {
+        if (target.ElementType != elementType)
+        {
+            float roll = Random.Range(0, 100);
+            if(roll <= parent.Proc)
+            {
+                target.AddDebuf(parent.GetDebuff());
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Enemy")
         {
             if(target.gameObject == collision.gameObject)
             {
-                target.TakeDamage(parent.Damage);
+                target.TakeDamage(parent.Damage, elementType);
                 GameManager.Instance.Pool.ReleaseObject(gameObject);
+                ApplyDebuff();
             }
         }
     }
+    
 }

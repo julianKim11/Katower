@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+public delegate void CurrencyChanged();
+
 public class GameManager : Singleton<GameManager>
 {
+    public event CurrencyChanged Changed;
     public TowerBtn ClickedBtn { get; set; }
     private int health = 100;
     private int bossHealth = 550;
@@ -47,6 +50,8 @@ public class GameManager : Singleton<GameManager>
         {
             this.currency = value;
             this.currencyText.text = value.ToString();
+            
+            OnCurrencyChanged();
         }
     }
     public int Lives
@@ -99,6 +104,14 @@ public class GameManager : Singleton<GameManager>
             Currency -= ClickedBtn.Price;
             Hover.Instance.Deactivate();
         }    
+    }
+    public void OnCurrencyChanged()
+    {
+        if(Changed != null)
+        {
+            Changed();
+            Debug.Log("Currency Changed");
+        }
     }
     public void SelectTower(Tower tower)
     {
@@ -186,7 +199,7 @@ public class GameManager : Singleton<GameManager>
             }
             activeEnemies.Add(enemy);
 
-            yield return new WaitForSeconds(1.2f);
+            yield return new WaitForSeconds(3f);
         }
     }
     public void RemoveEnemy(Enemy enemy)
@@ -198,6 +211,7 @@ public class GameManager : Singleton<GameManager>
             if(wave == 5 && Lives > 0)
             {
                 WinScreen();
+                MainManager.instance.estambre += 10;
             }
             else
             {

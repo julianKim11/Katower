@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1385396362452824596}
   - component: {fileID: 5726313666514565910}
   - component: {fileID: 6998623270913464874}
-  - component: {fileID: 3102094879966891175}
+  - component: {fileID: 565790548828554782}
   m_Layer: 2
   m_Name: Circle (1)
   m_TagString: Untagged
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: 0.00000011920929, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3102094879966891175
+--- !u!114 &565790548828554782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,13 +109,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3879419180477785164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ea73ba906f9bb34f943120b4ecaf2cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7babca7ceda1c1c48bd5011ad70b14c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: LuchadorProjectile
+  projectileType: TramperoProjectile
   projectileSpeed: 3
-  damage: 50
-  attackCooldown: 1.5
+  damage: 30
+  debuffDuration: 1
+  proc: 100
+  attackCooldown: 5
+  tickTime: 1
+  trampPrefab: {fileID: 6216953104404225182, guid: 3fa5d37bb83eee04cb58a688d0c679ae, type: 3}
+  trampDamage: 20
 --- !u!1 &8121777733758201813
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 69bf00845a862fc48b695ca92c279dac
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Boba Milky
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f5cc60711f8dab543855c04d3203af6e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
