@@ -1307,6 +1307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   estambre: 100
   tower: {fileID: 0}
+  ProfilePanel: {fileID: 1204285381}
   estambreText: {fileID: 1568413487}
 --- !u!4 &560108883
 Transform:
@@ -2442,7 +2443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1204285382
 RectTransform:
   m_ObjectHideFlags: 0

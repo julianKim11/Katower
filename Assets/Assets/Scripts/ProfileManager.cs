@@ -46,6 +46,17 @@ public class ProfileManager : MonoBehaviour
             }
 
             LoadCurrentProfile();
+
+            if (currentProfile != null)
+            {
+                ProfilePanel.SetActive(false);
+                Debug.Log("Perfil actual cargado: " + currentProfile.profileName);
+            }
+            else
+            {
+                // No se encontró un perfil actual, mostrar el Panel de Perfil
+                ProfilePanel.SetActive(true);
+            }
         }
         else
         {
@@ -137,6 +148,8 @@ public class ProfileManager : MonoBehaviour
                     gachaSystem.UpdateUI();
                     gachaSystem.UpdateTowerUI();
                 }
+
+                PlayerPrefs.SetString(lastProfileKey, currentProfileName);
             }
         }
         else
@@ -172,7 +185,7 @@ public class ProfileManager : MonoBehaviour
                 ProfilePanel.SetActive(false);
                 Debug.Log("Perfil creado: " + newProfileName);
 
-                PlayerPrefs.SetString(lastProfileKey, newProfileName);
+                //PlayerPrefs.SetString(lastProfileKey, newProfileName);
             }
             else
             {

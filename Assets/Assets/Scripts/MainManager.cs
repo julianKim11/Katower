@@ -8,14 +8,21 @@ public class MainManager : MonoBehaviour
     public static MainManager instance;
     [SerializeField] public int estambre = 0;
     public GameObject tower;
+    public GameObject ProfilePanel;
     public Text estambreText;
+    //public bool InGame;
 
     private void Awake()
     {
-        if(instance == null)
+        //InGame = true;
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            //if (InGame)
+            //{
+            //    ProfilePanel.SetActive(true);
+            //}
         }
         else
         {
