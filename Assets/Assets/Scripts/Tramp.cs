@@ -10,7 +10,7 @@ public class Tramp : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().TakeDamage(Damage, Element.TRAMPERO);
+            collision.GetComponent<Enemy>().TakeDamage(Damage, Element.TIERRA);
             Destroy(gameObject);
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum Element { LUCHADOR, TRAMPERO, ENAMORADO}
+public enum Element { TIERRA, AGUA, VIENTO, NINGUNO}
 
 public abstract class Tower : MonoBehaviour
 {
@@ -101,10 +101,6 @@ public abstract class Tower : MonoBehaviour
                 myAnimator.SetTrigger("Attack");
                 canAttack = false;
             }
-        }
-        else if (enemies.Count > 0)
-        {
-            target = enemies.Dequeue();
         }
         if(target != null && !target.Alive || target != null && !target.IsActive)
         {

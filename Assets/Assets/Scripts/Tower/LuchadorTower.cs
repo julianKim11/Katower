@@ -6,7 +6,7 @@ public class LuchadorTower : Tower
 {
     private void Start()
     {
-        ElementType = Element.LUCHADOR;
+        ElementType = Element.TIERRA;
     }
     public override Debuff GetDebuff()
     {

@@ -14,7 +14,7 @@ public class ProfileManager : MonoBehaviour
 
     public InputField profileNameInput;
     public Text currentProfileText;
-    public GameObject ProfilePanel;
+    public GameObject profilePanel;
     public GameObject yourTowersPanel;
     public Button yourTowers;
     public Button closeYourTowersPanel;
@@ -49,13 +49,13 @@ public class ProfileManager : MonoBehaviour
 
             if (currentProfile != null)
             {
-                ProfilePanel.SetActive(false);
+                profilePanel.SetActive(false);
                 Debug.Log("Perfil actual cargado: " + currentProfile.profileName);
             }
             else
             {
                 // No se encontró un perfil actual, mostrar el Panel de Perfil
-                ProfilePanel.SetActive(true);
+                profilePanel.SetActive(true);
             }
         }
         else
@@ -76,6 +76,10 @@ public class ProfileManager : MonoBehaviour
     public void OpenYourTowers()
     {
         yourTowersPanel.SetActive(true);
+    }
+    public void ToggleYourTowerPanel()
+    {
+        profilePanel.SetActive(!profilePanel.activeSelf);
     }
     public static Profile GetCurrentProfile()
     {
@@ -148,7 +152,6 @@ public class ProfileManager : MonoBehaviour
                     gachaSystem.UpdateUI();
                     gachaSystem.UpdateTowerUI();
                 }
-
                 PlayerPrefs.SetString(lastProfileKey, currentProfileName);
             }
         }
@@ -182,7 +185,7 @@ public class ProfileManager : MonoBehaviour
                 currentProfileText.text = newProfile.profileName;
                 FindObjectOfType<GachaSystem>().ActivateProfile();
 
-                ProfilePanel.SetActive(false);
+                profilePanel.SetActive(false);
                 Debug.Log("Perfil creado: " + newProfileName);
 
                 //PlayerPrefs.SetString(lastProfileKey, newProfileName);
@@ -197,7 +200,6 @@ public class ProfileManager : MonoBehaviour
             Debug.LogWarning("El nombre del perfil no puede estar vacío.");
         }
     }
-
 
     //public void SwitchProfile(string profileName)
     //{
@@ -225,7 +227,6 @@ public class ProfileManager : MonoBehaviour
     //        Debug.LogWarning("No se encontró el perfil: " + profileName);
     //    }
     //}
-
 
     private void SaveProfiles()
     {
@@ -256,9 +257,7 @@ public class ProfileManager : MonoBehaviour
             index++;
         }
         PlayerPrefs.Save();
-        
     }
-
 
     public void DeleteProfile()
     {
@@ -299,12 +298,16 @@ public class ProfileManager : MonoBehaviour
             Debug.LogWarning("No hay un perfil actual para borrar.");
         }
     }
+
+    public void DeleteAll()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
 
 [System.Serializable]
 public class Profile
 {
-
     [JsonProperty("profileName")]public string profileName;
     public int luchadorCount;
     public int tramperoCount;

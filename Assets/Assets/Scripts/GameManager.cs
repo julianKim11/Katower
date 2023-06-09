@@ -9,9 +9,10 @@ public delegate void CurrencyChanged();
 public class GameManager : Singleton<GameManager>
 {
     public event CurrencyChanged Changed;
+    public InGameMenu inGameMenu;
     public TowerBtn ClickedBtn { get; set; }
-    private int health = 100;
-    private int bossHealth = 550;
+    //private int health = 100;
+    //private int bossHealth = 550;
     private int currency;
     private int wave = 0;
     private int waveQ = 3;
@@ -86,8 +87,8 @@ public class GameManager : Singleton<GameManager>
     }
     private void Update()
     {
-        Debug.Log(wave);
-        HandleEscape();
+        //Debug.Log(wave);
+        //HandleEscape();
     }
     public void PickTower(TowerBtn towerBtn)
     {
@@ -130,13 +131,14 @@ public class GameManager : Singleton<GameManager>
         }
         selectedTower = null;
     }
-    private void HandleEscape()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Hover.Instance.Deactivate();
-        }
-    }
+    //private void HandleEscape()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Escape))
+    //    {
+    //        Hover.Instance.Deactivate();
+    //        inGameMenu.ShowInGameMenu();
+    //    }
+    //}
     public void StartWave()
     {
         wave++;
@@ -191,11 +193,11 @@ public class GameManager : Singleton<GameManager>
             Enemy enemy = Pool.GetObject(type).GetComponent<Enemy>();
             if(enemyIndex == 0)
             {
-                enemy.Spawn(health);
+                enemy.Spawn();
             }
             if(enemyIndex == 1)
             {
-                enemy.Spawn(bossHealth);
+                enemy.Spawn();
             }
             activeEnemies.Add(enemy);
 

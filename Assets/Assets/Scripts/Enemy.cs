@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     private Vector3 destination;
     public bool IsActive { get; set; }
     [SerializeField] private Stat health;
+    [SerializeField] private float maxHealth;
     private SpriteRenderer spriteRenderer;
     private int invulnerability = 2;
     public Element ElementType
@@ -37,13 +38,13 @@ public class Enemy : MonoBehaviour
         HandleDebuffs();
         Move();
     }
-    public void Spawn(int health)
+    public void Spawn()
     {
         debuffs.Clear();
         transform.position = LevelManager.Instance.BluePortal.transform.position;
 
         this.health.Bar.Reset();
-        this.health.MaxValue = health;
+        this.health.MaxValue = maxHealth;
         this.health.CurrentValue = this.health.MaxValue;
 
         StartCoroutine(Scale(new Vector3(0.1f, 0.1f), new Vector3(1, 1), false));
@@ -123,9 +124,10 @@ public class Enemy : MonoBehaviour
             if(damageSource == elementType)
             {
                 damage = damage / invulnerability;
-                invulnerability++;
             }
+
             health.CurrentValue -= damage;
+
             if(health.CurrentValue <= 0)
             {
                 GameManager.Instance.Currency += 100;
@@ -147,7 +149,6 @@ public class Enemy : MonoBehaviour
     public void RemoveDebuff(Debuff debuff)
     {
         debuffsToRemove.Add(debuff);
-        
     }
     private void HandleDebuffs()
     {
