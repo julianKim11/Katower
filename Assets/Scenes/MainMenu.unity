@@ -372,7 +372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 165838504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 883111360}
+        m_TargetAssemblyTypeName: ProfileManager2, Assembly-CSharp
+        m_MethodName: OpenYourTowers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &165838504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,6 +2043,10 @@ MonoBehaviour:
   nameInput: {fileID: 1049137425}
   currentProfileText: {fileID: 265388921}
   profilePanel: {fileID: 1204285381}
+  yourTowersPanel: {fileID: 1739629774}
+  closeYourTowersPanel: {fileID: 2143507269}
+  yourTowers: {fileID: 165838503}
+  gachaSystem: {fileID: 0}
 --- !u!1 &883601303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,8 +2541,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.0348, y: 46.4347}
-  m_SizeDelta: {x: 13.872, y: 13.4102}
+  m_AnchoredPosition: {x: 34.259983, y: 46.4347}
+  m_SizeDelta: {x: 15.2229, y: 17.0127}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156491259
 MonoBehaviour:
@@ -2555,7 +2571,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2828,8 +2844,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.782207, y: 44.8283}
-  m_SizeDelta: {x: 14.9639, y: 13.4303}
+  m_AnchoredPosition: {x: 34.782166, y: 44.603188}
+  m_SizeDelta: {x: 15.8645, y: 16.5824}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1276312631
 MonoBehaviour:
@@ -4371,8 +4387,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.958923, y: 42.310505}
-  m_SizeDelta: {x: 13.9834, y: 14.0586}
+  m_AnchoredPosition: {x: 34.409237, y: 42.310505}
+  m_SizeDelta: {x: 15.7846, y: 15.8598}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1929475387
 MonoBehaviour:
@@ -4401,7 +4417,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4696,7 +4712,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2143507270}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 883111360}
+        m_TargetAssemblyTypeName: ProfileManager2, Assembly-CSharp
+        m_MethodName: CloseYourTowersPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2143507270
 MonoBehaviour:
   m_ObjectHideFlags: 0

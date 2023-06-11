@@ -10,6 +10,11 @@ public class ProfileManager2 : MonoBehaviour
 
     public Text currentProfileText;
     public GameObject profilePanel;
+    public GameObject yourTowersPanel;
+    public Button closeYourTowersPanel;
+    public Button yourTowers;
+    //public List<Text> towerCountText;
+    public GachaSystem gachaSystem;
     void Start()
     {
         LoadSettings();
@@ -32,12 +37,25 @@ public class ProfileManager2 : MonoBehaviour
     }
     public void SetNamePref()
     {
+        Debug.Log("DELETEALL");
         PlayerPrefs.DeleteAll();
         PlayerPrefs.SetString("ProfileName", nameInput.text);
         currentProfileText.text = PlayerPrefs.GetString("ProfileName");
+        //PlayerPrefs.SetInt("Luchador", 0);
+        //PlayerPrefs.SetInt("Trampero", 0);
+        //PlayerPrefs.SetInt("Enamorado", 0);
+        //gachaSystem.UpdateTowerUI();
     }
     public void DeleteAll()
     {
         PlayerPrefs.DeleteAll();
+    }
+    public void CloseYourTowersPanel()
+    {
+        yourTowersPanel.SetActive(false);
+    }
+    public void OpenYourTowers()
+    {
+        yourTowersPanel.SetActive(true);
     }
 }
