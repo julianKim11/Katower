@@ -1,6 +1,7 @@
 # Katower
  
 Version: 0.6.2
+
 -Logica de daños elementales funcional:
 Terrestre > Volador
 Volador > Agua
