@@ -32,4 +32,29 @@ public class TowerBtn : MonoBehaviour
             priceText.color = Color.grey;
         }
     }
+    public void ShowInfo(string type)
+    {
+        string tooltip = string.Empty;
+
+        switch (type)
+        {
+            case "Luchador":
+                LuchadorTower luchador = towerPrebaf.GetComponentInChildren<LuchadorTower>();
+                tooltip = string.Format("Luchador\nDaño: {0} \nVel. de ataque: {1}",luchador.Damage, luchador.AttackCooldown);
+                break;
+            case "Trampero":
+                TramperoTower trampero = towerPrebaf.GetComponentInChildren<TramperoTower>();
+                tooltip = string.Format("Trampero\nDaño: {0} \nVel. de ataque: {1}\nHabilidad: Deja trampas\nDaño de trampa: {2}", trampero.Damage, trampero.AttackCooldown, trampero.TrampDamage);
+                break;
+            case "Enamorado":
+                EnamoradoTower enamorado = towerPrebaf.GetComponentInChildren<EnamoradoTower>();
+                tooltip = string.Format("Enamorado");
+                break;
+
+        }
+
+        GameManager.Instance.SetTooltipText(tooltip);
+
+        GameManager.Instance.ShowStats();
+    }
 }

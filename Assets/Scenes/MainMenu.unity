@@ -2046,7 +2046,7 @@ MonoBehaviour:
   yourTowersPanel: {fileID: 1739629774}
   closeYourTowersPanel: {fileID: 2143507269}
   yourTowers: {fileID: 165838503}
-  gachaSystem: {fileID: 0}
+  gachaSystem: {fileID: 827297106}
 --- !u!1 &883601303
 GameObject:
   m_ObjectHideFlags: 0

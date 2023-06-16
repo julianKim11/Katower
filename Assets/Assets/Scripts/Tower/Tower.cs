@@ -22,12 +22,20 @@ public abstract class Tower : MonoBehaviour
         {
             return damage;
         }
+        set
+        {
+            this.damage = value;
+        }
     }
     public float ProjectileSpeed
     {
         get
         {
             return projectileSpeed;
+        }
+        set
+        {
+            this.projectileSpeed = value;
         }
     }
     public float DebuffDuration
@@ -63,6 +71,17 @@ public abstract class Tower : MonoBehaviour
     private float attackTimer;
     [SerializeField] private float attackCooldown;
     private Queue<Enemy> enemies = new Queue<Enemy>();
+    public float AttackCooldown
+    {
+        get
+        {
+            return attackCooldown;
+        }
+        set
+        {
+            this.attackCooldown = value;
+        }
+    }
     private void Awake()
     {
         mySpriteRenderer = GetComponent<SpriteRenderer>();
@@ -134,4 +153,13 @@ public abstract class Tower : MonoBehaviour
     //    damage += amount;
     //}
     public abstract Debuff GetDebuff();
+
+    public void ApplyDamageBuff(int amount)
+    {
+        damage += amount;
+    }
+    public void RemoveDamageBuff(int amount)
+    {
+        damage -= amount;
+    }
 }

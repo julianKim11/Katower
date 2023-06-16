@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 1964712979462282722}
   m_Layer: 0
   m_Name: Luchador lvl 1_0
-  m_TagString: Untagged
+  m_TagString: Torre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

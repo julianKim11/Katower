@@ -11,8 +11,6 @@ public class GachaSystem : MonoBehaviour
     public Button closeButton;
     public Button gachaButton;
     public Button rollButton;
-    private bool isProfileActive = false;
-    public Dictionary<string, int> towerCount = new Dictionary<string, int>();
     public List<Text> towerCountText;
     public List<Button> upgradeButtons;
     private int luchador;
@@ -34,67 +32,21 @@ public class GachaSystem : MonoBehaviour
         gachaButton.onClick.AddListener(OpenGachaPanel);
         rollButton.onClick.AddListener(RollGacha);
 
-        //luchador = PlayerPrefs.GetInt("Luchador");
-        //trampero = PlayerPrefs.GetInt("Trampero");
-        //enamorado = PlayerPrefs.GetInt("Enamorado");
-        //towerCountText[0].text = PlayerPrefs.GetInt("Luchador").ToString();
-        //towerCountText[1].text = PlayerPrefs.GetInt("Trampero").ToString();
-        //towerCountText[2].text = PlayerPrefs.GetInt("Enamorado").ToString();
-        //for (int i = 0; i < upgradeButtons.Count; i++)
-        //{
-        //    int towerIndex = i; // Captura el índice de la torre actual en una variable local
-
-        //    upgradeButtons[i].onClick.AddListener(() => UpgradeTowerStats(towerIndex));
-        //}
-        //if (!isProfileActive)
-        //{
-        //    DisableRollButton();
-        //    towerImage.gameObject.SetActive(false);
-        //}
+        UpdateTowerUI();
     }
-    //public void UpgradeTowerStats(int towerIndex)
-    //{
-    //    Profile currentProfile = ProfileManager.GetCurrentProfile();
-
-    //    switch (towerIndex)
-    //    {
-    //        case 0:
-    //            if(currentProfile.luchadorCount >= 5)
-    //            {
-    //                Debug.Log("Luchador");
-    //            }
-    //            break;
-    //        case 1:
-    //            if(currentProfile.tramperoCount >= 5)
-    //            {
-    //                Debug.Log("Trampero");
-    //            }
-    //            break;
-    //        case 2:
-    //            if(currentProfile.enamoradoCount >= 5)
-    //            {
-    //                Debug.Log("Enamorado");
-    //            }
-    //            break;
-
-    //        default:
-    //            Debug.LogWarning("Torre no reconocida");
-    //            break;
-    //    }
-    //}
     public void ActivateProfile()
     {
-        isProfileActive = true;
+        //isProfileActive = true;
         UpdateUI();
     }
     public void DisableRollButton()
     {
-        isProfileActive = false;
+        //isProfileActive = false;
         DisableUI();
     }
     public void ResetTowerCounts()
     {
-       towerCount.Clear();
+       //towerCount.Clear();
        UpdateTowerUI();
     }
 
@@ -121,57 +73,44 @@ public class GachaSystem : MonoBehaviour
 
     public void UpdateTowerUI()
     {
-        //Profile currentProfile = ProfileManager.GetCurrentProfile();
-
-        if (towerCount.ContainsKey("Luchador"))
+        if (PlayerPrefs.HasKey("Luchador"))
         {
-            PlayerPrefs.SetInt("Luchador", luchador);
-            //currentProfile.luchadorCount = towerCount["Luchador"];
-            towerCountText[0].text = PlayerPrefs.GetInt("Luchador").ToString();
+            luchador = PlayerPrefs.GetInt("Luchador");
+            towerCountText[0].text = luchador.ToString();
         }
         else
         {
             towerCountText[0].text = "0";
         }
 
-        if (towerCount.ContainsKey("Trampero"))
+        if (PlayerPrefs.HasKey("Trampero"))
         {
-            PlayerPrefs.SetInt("Trampero", trampero);
-            //currentProfile.tramperoCount = towerCount["Trampero"];
-            towerCountText[1].text = PlayerPrefs.GetInt("Trampero").ToString();
+            trampero = PlayerPrefs.GetInt("Trampero");
+            towerCountText[1].text = trampero.ToString();
         }
         else
         {
             towerCountText[1].text = "0";
         }
 
-        if (towerCount.ContainsKey("Enamorado"))
+        if (PlayerPrefs.HasKey("Enamorado"))
         {
-            PlayerPrefs.SetInt("Enamorado", enamorado);
-            //currentProfile.enamoradoCount = towerCount["Enamorado"];
-            towerCountText[2].text = PlayerPrefs.GetInt("Enamorado").ToString();
+            enamorado = PlayerPrefs.GetInt("Enamorado");
+            towerCountText[2].text = enamorado.ToString();
         }
         else
         {
             towerCountText[2].text = "0";
         }
     }
-
+    public void ResetTowerCount()
+    {
+        luchador = 0;
+        trampero = 0;
+        enamorado = 0;
+    }
     public void RollGacha()
     {
-        //if (!isProfileActive)
-        //{
-        //    Debug.Log("No hay un perfil activo.");
-        //    return;
-        //}
-
-        //Profile currentProfile = ProfileManager.GetCurrentProfile();
-        //if (currentProfile == null)
-        //{
-        //    Debug.Log("No se ha seleccionado un perfil.");
-        //    return;
-        //}
-
         if (MainManager.instance.estambre > 0)
         {
             MainManager.instance.estambre--;
@@ -192,36 +131,29 @@ public class GachaSystem : MonoBehaviour
 
                 if (randomValue <= cumulativeProbability)
                 {
-                    if (towerCount.ContainsKey(item.name))
+                    if (PlayerPrefs.HasKey(item.name))
                     {
-                        towerCount[item.name]++;
+                        int currentCount = PlayerPrefs.GetInt(item.name);
+                        currentCount++;
+                        PlayerPrefs.SetInt(item.name, currentCount);
                     }
                     else
                     {
-                        towerCount[item.name] = 1;
+                        PlayerPrefs.SetInt(item.name, 1);
                     }
 
                     if (item.name == "Luchador")
                     {
-                        //currentProfile.luchadorCount++;
                         luchador++;
                     }
                     else if (item.name == "Trampero")
                     {
-                        //currentProfile.tramperoCount++;
                         trampero++;
                     }
                     else if (item.name == "Enamorado")
                     {
-                        //currentProfile.enamoradoCount++;
                         enamorado++;
                     }
-
-                    //if (currentProfile != null && !currentProfile.acquiredTowers.Contains(item.name))
-                    //{
-                    //    currentProfile.acquiredTowers.Add(item.name);
-                    //}
-
                     Debug.Log("¡Has obtenido la torre: " + item.name + "!");
                     MainManager.instance.tower = item.towerPrefab;
                     towerImage.sprite = item.sprite;

@@ -121,10 +121,39 @@ public class Enemy : MonoBehaviour
     {
         if (IsActive)
         {
-            if(damageSource == elementType)
+            float damageMultiplier = 1f;
+
+            if(damageSource == Element.TIERRA && elementType == Element.VIENTO)
             {
-                damage = damage / invulnerability;
+                //TIERRA VS VIENTO
+                damageMultiplier = 1.2f;
+            } else if(damageSource == Element.TIERRA && elementType == Element.AGUA)
+            {
+                //TIERRA VS AGUA
+                damageMultiplier = 0.8f;
             }
+            else if (damageSource == Element.VIENTO && elementType == Element.AGUA)
+            {
+                //VIENTO VS AGUA
+                damageMultiplier = 1.2f;
+            }
+            else if (damageSource == Element.VIENTO && elementType == Element.TIERRA)
+            {
+                //VIENTO VS TIERRA
+                damageMultiplier = 0.8f;
+            }
+            else if (damageSource == Element.AGUA && elementType == Element.TIERRA)
+            {
+                //AGUA VS TIERRA
+                damageMultiplier = 1.2f;
+            }
+            else if (damageSource == Element.AGUA && elementType == Element.VIENTO)
+            {
+                //AGUA VS VIENTO
+                damageMultiplier = 0.8f;
+            }
+
+            damage = Mathf.RoundToInt(damage * damageMultiplier);
 
             health.CurrentValue -= damage;
 

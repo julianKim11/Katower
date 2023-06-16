@@ -26,6 +26,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject panelShopBtn;
     [SerializeField] private GameObject panel;
     [SerializeField] private Text waveText;
+    [SerializeField] private GameObject statPanel;
     private bool gameOver = false;
     private bool winScreen = false;
     public ObjectPool Pool { get; set; }
@@ -33,6 +34,9 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject winScreenMenu;
     private Tower selectedTower;
     List<Enemy> activeEnemies = new List<Enemy>();
+
+    [SerializeField] private Text sizeText;
+    [SerializeField] private Text statText;
     
     public bool waveActive
     {
@@ -254,5 +258,14 @@ public class GameManager : Singleton<GameManager>
         waveBtn.SetActive(true);
         panelShopBtn.SetActive(true);
         panel.SetActive(false);
+    }
+    public void ShowStats()
+    {
+        statPanel.SetActive(!statPanel.activeSelf);
+    }
+    public void SetTooltipText(string txt)
+    {
+        statText.text = txt;
+        sizeText.text = txt;
     }
 }
