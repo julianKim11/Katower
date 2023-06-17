@@ -2,11 +2,11 @@
  
 Version: 0.6.2
 
--Logica de daños elementales funcional:
+-Logica de daños elementales funcional:<br>
 Terrestre > Volador.<br>
 Volador > Agua.<br/>
-Agua > Terrestre.
--Agregado Tooltip en los botones de las torres.
+Agua > Terrestre.<br/>
+-Agregado Tooltip en los botones de las torres.<br/>
 
 Bug Fixes:
 -Perfiles:
