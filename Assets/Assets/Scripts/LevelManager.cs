@@ -85,12 +85,12 @@ public class LevelManager : Singleton<LevelManager>
     }
     private void SpawnPortals()
     {
-        blueSpawn = new Point(2, 2);
+        blueSpawn = new Point(2, 5);
         GameObject tmp = Instantiate(bluePortalPrefab, Tiles[blueSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
         BluePortal = tmp.GetComponent<Spawn>();
         BluePortal.name = "BluePortal";
 
-        redSpawn = new Point(18, 2);//18,2 -2, 5
+        redSpawn = new Point(18, 6);//18,2 -2, 5
         Instantiate(redPortalPrefab, Tiles[redSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
     }
     public bool InBounds(Point position)

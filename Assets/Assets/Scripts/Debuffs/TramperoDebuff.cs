@@ -18,9 +18,11 @@ public class TramperoDebuff : Debuff
     {
         if(target != null)
         {
+            Debug.Log("1");
             timeSinceTick += Time.deltaTime;
             if(timeSinceTick >= tickTime)
             {
+                Debug.Log("2");
                 timeSinceTick = 0;
                 TrampOnTheGround();
             }
@@ -30,6 +32,7 @@ public class TramperoDebuff : Debuff
     }
     private void TrampOnTheGround()
     {
+        Debug.Log("trampa");
         Tramp tmp = GameObject.Instantiate(trampPrefab, target.transform.position, Quaternion.identity);
         tmp.Damage = trampDamage;
         Physics2D.IgnoreCollision(target.GetComponent<Collider2D>(), tmp.GetComponent<Collider2D>());
