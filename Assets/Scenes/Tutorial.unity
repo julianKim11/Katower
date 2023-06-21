@@ -420,11 +420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Bienvenido a Katower
-
-
-    Esta sera tu pantalla, tomate un momento para
-    aprenderla.'
+  m_Text: Bienvenidos a Katower
 --- !u!222 &126076374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -716,12 +712,12 @@ GameObject:
   - component: {fileID: 194384508}
   - component: {fileID: 194384507}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &194384506
 RectTransform:
   m_ObjectHideFlags: 0
@@ -946,8 +942,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.18990326, y: 1.9892}
+  m_SizeDelta: {x: -14.9671, y: -3.9784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &211572307
 MonoBehaviour:
@@ -976,13 +972,14 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Panel de tienda de Katowers
+  m_Text: 'Elije una torre y colocala en la zona del cesped. Durante la fase de oleada
+    no podras contruir torres asi que no te olvides de contruir antes de una oleada.
 
 '
 --- !u!222 &211572308
@@ -1005,12 +1002,12 @@ GameObject:
   - component: {fileID: 246153483}
   - component: {fileID: 246153482}
   m_Layer: 5
-  m_Name: Panel (2)
+  m_Name: Lives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &246153481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1177,12 +1174,12 @@ GameObject:
   - component: {fileID: 325982061}
   - component: {fileID: 325982060}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &325982059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1253,12 +1250,12 @@ GameObject:
   - component: {fileID: 362930868}
   - component: {fileID: 362930867}
   m_Layer: 5
-  m_Name: Panel (3)
+  m_Name: Katowers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &362930866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1276,8 +1273,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 400, y: 39.405}
-  m_SizeDelta: {x: 141.5669, y: 78.8104}
+  m_AnchoredPosition: {x: 107.86, y: 183.02}
+  m_SizeDelta: {x: 215.7302, y: 120.0972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &362930867
 MonoBehaviour:
@@ -1560,9 +1557,10 @@ MonoBehaviour:
   waveBtn: {fileID: 23132929}
   startBtn: {fileID: 164707014}
   panelShopBtn: {fileID: 1937063267}
-  panel: {fileID: 688918779}
   waveText: {fileID: 615734448}
   statPanel: {fileID: 127297279}
+  tutorialStartButton: {fileID: 843093834}
+  tutorialTowerPanel: {fileID: 362930865}
   gameOverMenu: {fileID: 933415478}
   winScreenMenu: {fileID: 758571918}
   sizeText: {fileID: 690912292}
@@ -2321,7 +2319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2988,7 +2986,7 @@ GameObject:
   - component: {fileID: 843093837}
   - component: {fileID: 843093836}
   m_Layer: 5
-  m_Name: Panel (4)
+  m_Name: StartWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3011,7 +3009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 400, y: 298}
+  m_AnchoredPosition: {x: 400, y: 290.8599}
   m_SizeDelta: {x: 171.6845, y: 95.5761}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &843093836
@@ -3487,12 +3485,12 @@ GameObject:
   - component: {fileID: 935927648}
   - component: {fileID: 935927647}
   m_Layer: 5
-  m_Name: Panel (5)
+  m_Name: Welcome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &935927646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3510,7 +3508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.966995}
+  m_AnchoredPosition: {x: 0, y: -17.967}
   m_SizeDelta: {x: -572.9664, y: -351.6423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &935927647
@@ -3643,7 +3641,7 @@ GameObject:
   - component: {fileID: 977394868}
   - component: {fileID: 977394870}
   m_Layer: 5
-  m_Name: MenuPanel
+  m_Name: Menu Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6393,12 +6391,12 @@ GameObject:
   - component: {fileID: 2007051459}
   - component: {fileID: 2007051458}
   m_Layer: 5
-  m_Name: Panel (6)
+  m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2007051457
 RectTransform:
   m_ObjectHideFlags: 0

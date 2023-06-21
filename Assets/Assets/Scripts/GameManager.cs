@@ -24,9 +24,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject waveBtn;
     [SerializeField] private GameObject startBtn;
     [SerializeField] private GameObject panelShopBtn;
-    [SerializeField] private GameObject panel;
+    //[SerializeField] private GameObject panel;
     [SerializeField] private Text waveText;
     [SerializeField] private GameObject statPanel;
+    [SerializeField] private GameObject tutorialStartButton;
+    [SerializeField] private GameObject tutorialTowerPanel;
     private bool gameOver = false;
     private bool winScreen = false;
     public ObjectPool Pool { get; set; }
@@ -92,7 +94,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         //Debug.Log(wave);
-        //HandleEscape();
+        HandleEscape();
     }
     public void PickTower(TowerBtn towerBtn)
     {
@@ -135,16 +137,18 @@ public class GameManager : Singleton<GameManager>
         }
         selectedTower = null;
     }
-    //private void HandleEscape()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape))
-    //    {
-    //        Hover.Instance.Deactivate();
-    //        inGameMenu.ShowInGameMenu();
-    //    }
-    //}
+    private void HandleEscape()
+    {
+        //Salir del modo construccion
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Hover.Instance.Deactivate();
+            inGameMenu.ShowInGameMenu();
+        }
+    }
     public void StartWave()
     {
+        tutorialTowerPanel.SetActive(false);
         wave++;
         waveText.text = string.Format("Oleada: <color=lime>{0}</color>", wave);
         StartCoroutine(SpawnWave());
@@ -257,7 +261,8 @@ public class GameManager : Singleton<GameManager>
         startBtn.SetActive(false);
         waveBtn.SetActive(true);
         panelShopBtn.SetActive(true);
-        panel.SetActive(false);
+        tutorialStartButton.SetActive(false);
+        tutorialTowerPanel.SetActive(true);
     }
     public void ShowStats()
     {
