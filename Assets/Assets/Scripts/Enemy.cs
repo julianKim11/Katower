@@ -172,17 +172,20 @@ public class Enemy : MonoBehaviour
     {
         if(!debuffs.Exists(x => x.GetType() == debuff.GetType()))
         {
+            Debug.Log("AddDebuf");
             newDebuffs.Add(debuff);
         }
     }
     public void RemoveDebuff(Debuff debuff)
     {
         debuffsToRemove.Add(debuff);
+        Debug.Log("RemoveDebuf");
     }
     private void HandleDebuffs()
     {
         if(newDebuffs.Count > 0)
         {
+            Debug.Log("NewDebuf");
             debuffs.AddRange(newDebuffs);
             newDebuffs.Clear();
         }

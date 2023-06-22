@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 7886061130994763034}
   - component: {fileID: 1964712979462282722}
   m_Layer: 0
-  m_Name: Luchador lvl 1_0
+  m_Name: Luchador
   m_TagString: Torre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

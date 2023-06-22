@@ -72,18 +72,21 @@ public class TileScript : MonoBehaviour
    
     private void PlaceTower()
     {
-            GameObject tower = (GameObject)Instantiate(GameManager.Instance.ClickedBtn.TowerPrebaf, transform.position, Quaternion.identity);
-            tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.y;
+        GameObject tower = (GameObject)Instantiate(GameManager.Instance.ClickedBtn.TowerPrebaf, transform.position, Quaternion.identity);
+        tower.GetComponent<SpriteRenderer>().sortingOrder = GridPosition.y;
 
-            tower.transform.SetParent(transform);
+        tower.transform.SetParent(transform);
 
-            this.myTower = tower.transform.GetChild(0).GetComponent<Tower>();
+        this.myTower = tower.transform.GetChild(0).GetComponent<Tower>();
 
-            IsEmpty = false;
-            ColorTile(Color.white);
-            GameManager.Instance.BuyTower();
+        IsEmpty = false;
+        ColorTile(Color.white);
 
-            WalkAble = false;
+        myTower.Price = GameManager.Instance.ClickedBtn.Price;
+
+        GameManager.Instance.BuyTower();
+
+        WalkAble = false;
     }
     private void ColorTile(Color newColor)
     {

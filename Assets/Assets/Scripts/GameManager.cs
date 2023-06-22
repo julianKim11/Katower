@@ -36,10 +36,14 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject winScreenMenu;
     private Tower selectedTower;
     List<Enemy> activeEnemies = new List<Enemy>();
-
-    [SerializeField] private Text sizeText;
     [SerializeField] private Text statText;
-    
+
+    [Header("Upgrade Panel")]
+    [SerializeField] private GameObject UpgradePanel;
+    [SerializeField] private Text sellText;
+    [SerializeField] private Text upgradePrice;
+
+
     public bool waveActive
     {
         get
@@ -128,6 +132,9 @@ public class GameManager : Singleton<GameManager>
         }
         selectedTower = tower;
         selectedTower.Select();
+        sellText.text = "+ " + (selectedTower.Price / 2).ToString() + " $";
+        UpgradePanel.SetActive(true);
+
     }
     public void DeselectTower()
     {
@@ -135,6 +142,7 @@ public class GameManager : Singleton<GameManager>
         {
             selectedTower.Select();
         }
+        UpgradePanel.SetActive(false);
         selectedTower = null;
     }
     private void HandleEscape()
@@ -268,9 +276,51 @@ public class GameManager : Singleton<GameManager>
     {
         statPanel.SetActive(!statPanel.activeSelf);
     }
+    public void ShowSelectedTowerStats()
+    {
+        statPanel.SetActive(!statPanel.activeSelf);
+        UpdateUpgradeTip();
+    }
     public void SetTooltipText(string txt)
     {
         statText.text = txt;
-        sizeText.text = txt;
+        //sizeText.text = txt;
+    }
+    public void UpdateUpgradeTip()
+    {
+        if(selectedTower != null)
+        {
+            sellText.text = "+ " + (selectedTower.Price / 2).ToString() + " $";
+            SetTooltipText(selectedTower.GetStats());
+            if(selectedTower.NextUpgrade != null)
+            {
+                upgradePrice.text = selectedTower.NextUpgrade.Price.ToString() + " $";
+            }
+            else
+            {
+                upgradePrice.text = string.Empty;
+            }
+        }
+    }
+    public void SellTower()
+    {
+        if(selectedTower != null)
+        {
+            Currency += selectedTower.Price / 2;
+
+            selectedTower.GetComponentInParent<TileScript>().IsEmpty = true;
+            Destroy(selectedTower.transform.parent.gameObject);
+            DeselectTower();
+        }
+    }
+    public void UpgradeTower()
+    {
+        if(selectedTower != null)
+        {
+            if(selectedTower.Level <= selectedTower.Upgrades.Length && Currency >= selectedTower.NextUpgrade.Price)
+            {
+                selectedTower.Upgrade();
+            }
+        }
     }
 }

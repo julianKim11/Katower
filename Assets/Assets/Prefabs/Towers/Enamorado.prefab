@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3167119458665433753}
   - component: {fileID: 3167119458665433754}
   m_Layer: 0
-  m_Name: Enamoradizo lvl1_0
+  m_Name: Enamorado
   m_TagString: Torre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

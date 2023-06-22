@@ -117,8 +117,8 @@ MonoBehaviour:
   damage: 30
   debuffDuration: 1
   proc: 100
-  attackCooldown: 3
-  tickTime: 0.5
+  attackCooldown: 3.5
+  tickTime: 1
   trampPrefab: {fileID: 6216953104404225182, guid: 3fa5d37bb83eee04cb58a688d0c679ae, type: 3}
   trampDamage: 20
 --- !u!1 &8121777733758201813
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 8121777733758201815}
   - component: {fileID: 8121777733758201814}
   m_Layer: 0
-  m_Name: Trampero lvl1_0 1
+  m_Name: Trampero
   m_TagString: Torre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
