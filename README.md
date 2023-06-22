@@ -16,10 +16,11 @@ Solucionado la trampa del trampero que no caia despues de golpear al enemigo.<br
 
 Version: 0.6.2
 
--Logica de daños elementales funcional:<br>
+-Logica de daños elementales funcional: (+20%, -20%)<br>
 Terrestre > Volador.<br>
 Volador > Agua.<br>
 Agua > Terrestre.<br>
+
 -Agregado Tooltip en los botones de las torres.<br>
 
 -Perfiles:<br>
