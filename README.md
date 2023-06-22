@@ -1,5 +1,12 @@
 # Katower
- 
+Version: 0.6.4
+
+-Cambios en el tutorial:<br>
+Mapa simplificado, nueva ruta,<br>
+
+-Katowers:<br>
+Solucionado la trampa del trampero que no caia despues de golpear al enemigo.<br>
+
 Version: 0.6.2
 
 -Logica de daños elementales funcional:<br>
