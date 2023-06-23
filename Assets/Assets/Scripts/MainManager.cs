@@ -5,24 +5,28 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
-    public static MainManager instance;
-    [SerializeField] public int estambre = 0;
-    public GameObject tower;
-    public GameObject ProfilePanel;
-    public Text estambreText;
-    //public bool InGame;
+    public static MainManager Instance;
+    public GameObject profilePanel;
+    public Text yarmText;
+    private int yarm = 0;
 
+    public int Yarm
+    {
+        get
+        {
+            return yarm;
+        }
+        set
+        {
+            this.yarm = value;
+        }
+    }
     private void Awake()
     {
-        //InGame = true;
-        if (instance == null)
+        if (MainManager.Instance == null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            //if (InGame)
-            //{
-            //    ProfilePanel.SetActive(true);
-            //}
+            MainManager.Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -31,7 +35,11 @@ public class MainManager : MonoBehaviour
     }
     private void Update()
     {
-        estambreText.text = estambre.ToString();
+        yarmText.text = yarm.ToString();
     }
-    
+    public void WinYarm(int amount)
+    {
+        Debug.Log("ganaste 2 estambres");
+        yarm += amount;
+    }
 }

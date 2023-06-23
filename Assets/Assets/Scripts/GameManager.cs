@@ -8,41 +8,55 @@ public delegate void CurrencyChanged();
 
 public class GameManager : Singleton<GameManager>
 {
-    public event CurrencyChanged Changed;
-    public InGameMenu inGameMenu;
-    public TowerBtn ClickedBtn { get; set; }
-    //private int health = 100;
-    //private int bossHealth = 550;
-    private int currency;
-    private int wave = 0;
-    private int waveQ = 3;
-    private int lives;
-    private int enemyIndex;
-    private bool completedWave5 = false;
-    [SerializeField] private Text livesText;
-    [SerializeField] private Text currencyText;
-    [SerializeField] private GameObject waveBtn;
-    [SerializeField] private GameObject startBtn;
-    [SerializeField] private GameObject panelShopBtn;
-    //[SerializeField] private GameObject panel;
-    [SerializeField] private Text waveText;
-    [SerializeField] private GameObject statPanel;
-    [SerializeField] private GameObject tutorialStartButton;
-    [SerializeField] private GameObject tutorialTowerPanel;
-    private bool gameOver = false;
-    private bool winScreen = false;
-    public ObjectPool Pool { get; set; }
-    [SerializeField] private GameObject gameOverMenu;
-    [SerializeField] private GameObject winScreenMenu;
-    private Tower selectedTower;
-    List<Enemy> activeEnemies = new List<Enemy>();
-    [SerializeField] private Text statText;
-
     [Header("Upgrade Panel")]
     [SerializeField] private GameObject UpgradePanel;
     [SerializeField] private Text sellText;
     [SerializeField] private Text upgradePrice;
 
+    public TowerBtn ClickedBtn { get; set; }
+    [SerializeField]
+    private GameObject panelShopBtn;
+    private Tower selectedTower;
+
+    [Header("Menu")]
+    public InGameMenu inGameMenu;
+
+    public event CurrencyChanged Changed;
+    public ObjectPool Pool { get; set; }
+    private int currency;
+    private int wave = 0;
+    private int waveQ = 3;
+    private int lives;
+    private int enemyIndex;
+    private bool waveCompleted = false;
+    private int waveCount;
+    [SerializeField] 
+    private Text waveText;
+    [SerializeField]
+    private Text livesText;
+    [SerializeField]
+    private Text currencyText;
+    [SerializeField]
+    private GameObject waveBtn;
+    [SerializeField]
+    private GameObject startBtn;
+
+    [Header("Tooltip")]
+    [SerializeField] private GameObject statPanel;
+    [SerializeField] private Text statText;
+
+    [Header("WinAndLose")]
+    private bool gameOver = false;
+    private bool winScreen = false;
+    [SerializeField] private GameObject gameOverMenu;
+    [SerializeField] private GameObject winScreenMenu;
+
+    [Header("Tutorial")]
+    [SerializeField] private GameObject tutorialStartButton;
+    [SerializeField] private GameObject tutorialTowerPanel;
+
+    [Header("Enemy")]
+    List<Enemy> activeEnemies = new List<Enemy>();
 
     public bool waveActive
     {
@@ -79,10 +93,10 @@ public class GameManager : Singleton<GameManager>
                 this.lives = 0;
                 GameOver();   
             }
-            else if (completedWave5 && wave > 5)
-            {
-                WinScreen();
-            }
+            //else if (waveCompleted && wave == 3)
+            //{
+            //    WinScreen();
+            //}
             livesText.text = lives.ToString();
         }
     }
@@ -156,44 +170,39 @@ public class GameManager : Singleton<GameManager>
     }
     public void StartWave()
     {
+        panelShopBtn.SetActive(false);
         tutorialTowerPanel.SetActive(false);
         wave++;
         waveText.text = string.Format("Oleada: <color=lime>{0}</color>", wave);
-        StartCoroutine(SpawnWave());
         waveBtn.SetActive(false);
-        
-        if(wave > 5 && Lives > 0)
-        {
-            completedWave5 = true;
-        }
+        StartCoroutine(SpawnWave());
     }
     private IEnumerator SpawnWave()
     {
+        //int enemyCount = 0;
         LevelManager.Instance.GeneratePath();
-        if(wave == 2)
+        if (wave == 1)
+        {
+            waveQ = 3;
+            waveCount = 3;
+            enemyIndex = 0;
+        }
+        if (wave == 2)
         {
             waveQ = 5;
+            waveCount = 5;
             enemyIndex = 0;
         }
-        if(wave == 3)
+        if (wave == 3)
         {
-            waveQ = 8;
+            waveQ = 3;
+            waveCount = 3;
             enemyIndex = 0;
         }
-        if (wave == 4)
-        {
-            waveQ = 10;
-            enemyIndex = 0;
-        }
-        if (wave == 5)
-        {
-            waveQ = 1;
-            enemyIndex = 1;
-        }
+        int enemiesOfType0 = 1; // Variable para llevar la cuenta de los enemigos de tipo 0 generados
+
         for (int i = 0; i < waveQ; i++)
         {
-            //int enemyIndex = 0; //Random.Range(0, 3);
-
             string type = string.Empty;
 
             switch (enemyIndex)
@@ -207,34 +216,45 @@ public class GameManager : Singleton<GameManager>
             }
 
             Enemy enemy = Pool.GetObject(type).GetComponent<Enemy>();
-            if(enemyIndex == 0)
+            if(wave == 1 || wave == 2) 
             {
                 enemy.Spawn();
+                waveCount--;
             }
-            if(enemyIndex == 1)
+            if(wave == 3)
             {
-                enemy.Spawn();
+                if (enemyIndex == 0 && enemiesOfType0 < 2) // Generar 2 enemigos de tipo 0
+                {
+                    enemiesOfType0++;
+                    enemy.Spawn();
+                }
+                else if (enemyIndex == 1 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                {
+                    enemyIndex = 1;
+                    enemy.Spawn();
+                }
+                waveCount--;
             }
             activeEnemies.Add(enemy);
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
+        }
+        if (waveCount == 0)
+        {
+            waveBtn.SetActive(true);
+            panelShopBtn.SetActive(true);
         }
     }
     public void RemoveEnemy(Enemy enemy)
     {
         activeEnemies.Remove(enemy);
-
-        if (!waveActive && !gameOver)
+        //Debug.Log("eliminado");
+        
+        if (/*!waveActive && !gameOver*/wave == 3 && Lives > 0 && waveCount == 0)
         {
-            if(wave == 5 && Lives > 0)
-            {
-                WinScreen();
-                MainManager.instance.estambre += 10;
-            }
-            else
-            {
-                waveBtn.SetActive(true);
-            }
+            Debug.Log("Ganaste");
+            WinScreen();
+            MainManager.Instance.WinYarm(2);
         }
     }
     public void GameOver()
@@ -256,7 +276,6 @@ public class GameManager : Singleton<GameManager>
     public void Restart()
     {
         Time.timeScale = 1;
-
         SceneManager.LoadScene(1);
     }
     public void MainMenu()

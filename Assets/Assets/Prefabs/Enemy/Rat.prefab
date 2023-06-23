@@ -98,13 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24cd72c1e8a807b4c8756fd367bf77e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
-  elementType: 3
   health:
     bar: {fileID: 4409812444310548911}
     maxValue: 0
     currentValue: 0
   maxHealth: 200
+  speed: 1.5
+  elementType: 0
+  fishDropOnKill: 100
 --- !u!61 &216643175417048517
 BoxCollider2D:
   m_ObjectHideFlags: 0

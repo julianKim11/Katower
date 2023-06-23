@@ -7,7 +7,7 @@ public class EnamoradoTower : Tower
     [SerializeField] private int buffDamageAmount;
     private void Start()
     {
-        ElementType = Element.TIERRA;
+        ElementType = Element.TORRETIERRA;
     }
     public int BuffDamageAmount
     {

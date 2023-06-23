@@ -1270,7 +1270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 107.86, y: 183.02}
+  m_AnchoredPosition: {x: 222, y: 389.95}
   m_SizeDelta: {x: 215.7302, y: 120.0972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &362930867
@@ -1627,22 +1627,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ecee6c72103837438c5a07d6c6eca5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpgradePanel: {fileID: 1608968915}
+  sellText: {fileID: 487248483}
+  upgradePrice: {fileID: 764624838}
+  panelShopBtn: {fileID: 1937063267}
   inGameMenu: {fileID: 0}
+  waveText: {fileID: 615734448}
   livesText: {fileID: 503934306}
   currencyText: {fileID: 836740176}
   waveBtn: {fileID: 23132929}
   startBtn: {fileID: 164707014}
-  panelShopBtn: {fileID: 1937063267}
-  waveText: {fileID: 615734448}
   statPanel: {fileID: 127297279}
-  tutorialStartButton: {fileID: 843093834}
-  tutorialTowerPanel: {fileID: 362930865}
+  statText: {fileID: 1448922443}
   gameOverMenu: {fileID: 933415478}
   winScreenMenu: {fileID: 758571918}
-  statText: {fileID: 1448922443}
-  UpgradePanel: {fileID: 1608968915}
-  sellText: {fileID: 487248483}
-  upgradePrice: {fileID: 764624838}
+  tutorialStartButton: {fileID: 843093834}
+  tutorialTowerPanel: {fileID: 362930865}
 --- !u!4 &514127480
 Transform:
   m_ObjectHideFlags: 0

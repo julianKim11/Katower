@@ -111,9 +111,9 @@ public class GachaSystem : MonoBehaviour
     }
     public void RollGacha()
     {
-        if (MainManager.instance.estambre > 0)
+        if (MainManager.Instance.Yarm > 0)
         {
-            MainManager.instance.estambre--;
+            MainManager.Instance.Yarm--;
 
             float randomValue = Random.value;
             float totalProbability = 0f;
@@ -155,7 +155,7 @@ public class GachaSystem : MonoBehaviour
                         enamorado++;
                     }
                     Debug.Log("¡Has obtenido la torre: " + item.name + "!");
-                    MainManager.instance.tower = item.towerPrefab;
+                    //MainManager.instance.tower = item.towerPrefab;
                     towerImage.sprite = item.sprite;
                     towerImage.gameObject.SetActive(true);
                     UpdateTowerUI();

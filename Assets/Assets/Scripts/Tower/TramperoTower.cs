@@ -23,7 +23,7 @@ public class TramperoTower : Tower
     }
     private void Start()
     {
-        ElementType = Element.TIERRA;
+        ElementType = Element.TORRETIERRA;
     }
     public override Debuff GetDebuff()
     {

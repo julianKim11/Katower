@@ -6,7 +6,7 @@ public class LuchadorTower : Tower
 {
     private void Start()
     {
-        ElementType = Element.TIERRA;
+        ElementType = Element.TORRETIERRA;
         Upgrades = new TowerUpgrade[]
         {
             new TowerUpgrade(250 ,50 ,0 ,0.5f),

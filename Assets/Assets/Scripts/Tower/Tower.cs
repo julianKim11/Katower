@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum Element { TIERRA, AGUA, VIENTO, NINGUNO}
+public enum Element { TIERRA, AGUA, VIENTO, TORRETIERRA, TORREAGUA, TORREVIENTO }
 
 public abstract class Tower : MonoBehaviour
 {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private GameObject[] tilePrefabs;
@@ -13,6 +14,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private GameObject redPortalPrefab;
     private Point mapSize;
     private Stack<Node> path;
+    private int sceneNumber;
     //public static Stack<Node> fixedPath = new Stack<Node>();
     public Stack<Node> Path
     {
@@ -33,6 +35,7 @@ public class LevelManager : Singleton<LevelManager>
     }
     void Start()
     {
+        sceneNumber = SceneManager.GetActiveScene().buildIndex;
         CreateLevel();
     }
     private void CreateLevel()
@@ -77,7 +80,18 @@ public class LevelManager : Singleton<LevelManager>
     }
     private string[] ReadLevelText()
     {
-        TextAsset bindData = Resources.Load("Level") as TextAsset;
+        string mapa = "";
+
+        if(sceneNumber == 1)
+        {
+            mapa = "Level1-1";
+        }
+        if(sceneNumber == 2)
+        {
+            mapa = "Level2-1";
+        }
+
+        TextAsset bindData = Resources.Load(mapa) as TextAsset;
 
         string data = bindData.text.Replace(Environment.NewLine, string.Empty);
 
@@ -85,12 +99,19 @@ public class LevelManager : Singleton<LevelManager>
     }
     private void SpawnPortals()
     {
-        blueSpawn = new Point(2, 5);
+        if(sceneNumber == 1)
+        {
+            blueSpawn = new Point(2, 5);
+            redSpawn = new Point(18, 6);//18,2 -2, 5
+        }
+        if (sceneNumber == 2)
+        {
+            blueSpawn = new Point(2, 1);
+            redSpawn = new Point(17, 17);//18,2 -2, 5
+        }
         GameObject tmp = Instantiate(bluePortalPrefab, Tiles[blueSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
         BluePortal = tmp.GetComponent<Spawn>();
         BluePortal.name = "BluePortal";
-
-        redSpawn = new Point(18, 6);//18,2 -2, 5
         Instantiate(redPortalPrefab, Tiles[redSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
     }
     public bool InBounds(Point position)

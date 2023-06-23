@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [Header("Life")]
+    [SerializeField] private Stat health;
+    [SerializeField] private float maxHealth;
+
+    [Header("Position")]
     private Stack<Node> path;
+    public Point GridPosition { get; set; }
+    private Vector3 destination;
+    private SpriteRenderer spriteRenderer;
+
+    [Header("Enemy")]
+    [SerializeField] private float speed;
     [SerializeField] private Element elementType;
+    public bool IsActive { get; set; }
+    [SerializeField] private int fishDropOnKill;
+    
+    [Header("Debuffs")]
     private List<Debuff> debuffs = new List<Debuff>();
     private List<Debuff> debuffsToRemove = new List<Debuff>();
     private List<Debuff> newDebuffs = new List<Debuff>();
-    public Point GridPosition { get; set; }
-    private Vector3 destination;
-    public bool IsActive { get; set; }
-    [SerializeField] private Stat health;
-    [SerializeField] private float maxHealth;
-    private SpriteRenderer spriteRenderer;
-    private int invulnerability = 2;
     public Element ElementType
     {
         get
@@ -123,31 +130,31 @@ public class Enemy : MonoBehaviour
         {
             float damageMultiplier = 1f;
 
-            if(damageSource == Element.TIERRA && elementType == Element.VIENTO)
+            if(damageSource == Element.TORRETIERRA && elementType == Element.VIENTO)
             {
                 //TIERRA VS VIENTO
                 damageMultiplier = 1.2f;
-            } else if(damageSource == Element.TIERRA && elementType == Element.AGUA)
+            } else if(damageSource == Element.TORRETIERRA && elementType == Element.AGUA)
             {
                 //TIERRA VS AGUA
                 damageMultiplier = 0.8f;
             }
-            else if (damageSource == Element.VIENTO && elementType == Element.AGUA)
+            else if (damageSource == Element.TORREVIENTO && elementType == Element.AGUA)
             {
                 //VIENTO VS AGUA
                 damageMultiplier = 1.2f;
             }
-            else if (damageSource == Element.VIENTO && elementType == Element.TIERRA)
+            else if (damageSource == Element.TORREVIENTO && elementType == Element.TIERRA)
             {
                 //VIENTO VS TIERRA
                 damageMultiplier = 0.8f;
             }
-            else if (damageSource == Element.AGUA && elementType == Element.TIERRA)
+            else if (damageSource == Element.TORREAGUA && elementType == Element.TIERRA)
             {
                 //AGUA VS TIERRA
                 damageMultiplier = 1.2f;
             }
-            else if (damageSource == Element.AGUA && elementType == Element.VIENTO)
+            else if (damageSource == Element.TORREAGUA && elementType == Element.VIENTO)
             {
                 //AGUA VS VIENTO
                 damageMultiplier = 0.8f;
@@ -159,7 +166,7 @@ public class Enemy : MonoBehaviour
 
             if(health.CurrentValue <= 0)
             {
-                GameManager.Instance.Currency += 100;
+                GameManager.Instance.Currency += fishDropOnKill;
 
                 //myAnimator.SetTrigger("Die");
 
