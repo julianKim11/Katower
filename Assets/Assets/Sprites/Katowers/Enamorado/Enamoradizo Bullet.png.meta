@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 93962f0ea0d686544b3b4708b53411dd
+guid: 1adb06b1f160b344d8d4a0a8bb3e8a97
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -516091054131125173
-    second: Tooltip_0
+      213: 81471482449082493
+    second: Enamoradizo Bullet_0
+  - first:
+      213: -6140117878590169821
+    second: Enamoradizo Bullet_2
+  - first:
+      213: 8948705803081352748
+    second: Enamoradizo Bullet_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tooltip_0
+      name: Enamoradizo Bullet_0
       rect:
         serializedVersion: 2
-        x: 42
-        y: 51
-        width: 316
-        height: 278
+        x: 422
+        y: 124
+        width: 121
+        height: 121
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,8 +126,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b44e1ceabe976d8f0800000000000000
-      internalID: -516091054131125173
+      spriteID: d78b3b2b1e1712100800000000000000
+      internalID: 81471482449082493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enamoradizo Bullet_2
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 130
+        width: 70
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d9b97325be9caa0800000000000000
+      internalID: -6140117878590169821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enamoradizo Bullet_5
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 138
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2604200480303c70800000000000000
+      internalID: 8948705803081352748
       vertices: []
       indices: 
       edges: []

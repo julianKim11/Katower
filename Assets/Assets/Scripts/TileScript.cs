@@ -12,8 +12,11 @@ public class TileScript : MonoBehaviour
     //private SpriteRenderer spriteRenderer;
     private SpriteRenderer spriteRenderer;
     private Tower myTower;
+    //[SerializeField] private Element elementType;
     public bool WalkAble { get; set; }
     public bool Debugging { get; set; }
+    //public Element ElementType { get; set; }
+    //public bool HasTower { get; set; }
     public Vector2 WorldPosition
     {
         get

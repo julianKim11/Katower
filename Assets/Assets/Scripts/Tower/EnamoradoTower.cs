@@ -4,40 +4,42 @@ using UnityEngine;
 
 public class EnamoradoTower : Tower
 {
-    [SerializeField] private int buffDamageAmount;
+    //public static event System.Action<int> OnEnamoradoTowerPlaced;
+    //[SerializeField] private int buffDamageAmount;
+    private int attackCount;
     private void Start()
     {
         ElementType = Element.TORRETIERRA;
+        Upgrades = new TowerUpgrade[]
+        {
+            new TowerUpgrade(250, 5, 0.25f, 1),
+            new TowerUpgrade(250, 5, 0.25f, 1),
+        };
+        //if(OnEnamoradoTowerPlaced != null)
+        //    OnEnamoradoTowerPlaced(buffDamageAmount);
+        attackCount = 1;
     }
-    public int BuffDamageAmount
+    public override void Attack()
     {
-        get { return BuffDamageAmount; }
-        set { BuffDamageAmount = value; }
+        Debug.Log(attackCount);
+        base.Attack();
+        if (attackCount % 5 == 0)
+        {
+            Damage += 5;
+            attackCount = 1;
+        }
+    }
+    public override void Shoot()
+    {
+        base.Shoot();
+        attackCount++;
     }
     public override Debuff GetDebuff()
     {
         return new EnamoradoDebuff(Target);
-
     }
-    private new void OnTriggerEnter2D(Collider2D collision)
+    public override string GetStats()
     {
-        Debug.Log("ENTRO E");
-        Tower tower = collision.GetComponent<Tower>();
-        if (collision.tag == "Torre")
-        {
-            tower.ApplyDamageBuff(BuffDamageAmount);
-        }
-
+        return string.Format("{0}{1}", "<size=20>Enamorado</size>", base.GetStats());
     }
-    private new void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log("SALIO E");
-        Tower tower = collision.GetComponent<Tower>();
-        
-        if (collision.tag == "Torre")
-        {
-            tower.RemoveDamageBuff(BuffDamageAmount);
-        }
-    }
-    
 }

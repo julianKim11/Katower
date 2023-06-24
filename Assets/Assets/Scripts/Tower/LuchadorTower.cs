@@ -9,8 +9,8 @@ public class LuchadorTower : Tower
         ElementType = Element.TORRETIERRA;
         Upgrades = new TowerUpgrade[]
         {
-            new TowerUpgrade(250 ,50 ,0 ,0.5f),
-            new TowerUpgrade(300 ,100 ,0 ,1f),
+            new TowerUpgrade(250 ,50 ,0.25f ),
+            new TowerUpgrade(300 ,50 ,0.25f),
         };
     }
     public override Debuff GetDebuff()

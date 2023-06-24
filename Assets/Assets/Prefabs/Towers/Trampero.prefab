@@ -114,13 +114,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileType: TramperoProjectile
   projectileSpeed: 3
-  damage: 30
+  damage: 50
   debuffDuration: 1
   proc: 100
   attackCooldown: 3.5
+  towerPrebaf: {fileID: 8121777733758201813}
   tickTime: 1
   trampPrefab: {fileID: 6216953104404225182, guid: 3fa5d37bb83eee04cb58a688d0c679ae, type: 3}
-  trampDamage: 20
+  trampDamage: 50
 --- !u!1 &8121777733758201813
 GameObject:
   m_ObjectHideFlags: 0

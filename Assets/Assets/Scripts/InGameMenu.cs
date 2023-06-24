@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class InGameMenu : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel;
+    [SerializeField] private LevelManager levelManager;
+    private int sceneNumber;
+    private void Start()
+    {
+        sceneNumber = SceneManager.GetActiveScene().buildIndex;
+    }
     private void Update()
     {
-        
         HandleEscape();
     }
     public void ShowInGameMenu()
@@ -27,10 +32,12 @@ public class InGameMenu : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneNumber);
     }
     public void MainMenu()
     {
+        Time.timeScale = 1;
+        levelManager.ResetLevelManager();
         SceneManager.LoadScene(0);
     }
     private void HandleEscape()

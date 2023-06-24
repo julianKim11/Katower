@@ -8,7 +8,7 @@ public class MainManager : MonoBehaviour
     public static MainManager Instance;
     public GameObject profilePanel;
     public Text yarmText;
-    private int yarm = 0;
+    private int yarm = 10;
 
     public int Yarm
     {
@@ -25,6 +25,7 @@ public class MainManager : MonoBehaviour
     {
         if (MainManager.Instance == null)
         {
+            
             MainManager.Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }

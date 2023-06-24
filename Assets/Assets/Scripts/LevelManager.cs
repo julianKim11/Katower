@@ -15,6 +15,7 @@ public class LevelManager : Singleton<LevelManager>
     private Point mapSize;
     private Stack<Node> path;
     private int sceneNumber;
+    //[SerializeField] private GameObject towerPrefab;
     //public static Stack<Node> fixedPath = new Stack<Node>();
     public Stack<Node> Path
     {
@@ -76,8 +77,40 @@ public class LevelManager : Singleton<LevelManager>
 
         float tileSize = TileSize - 0.01f;
 
+        //Element towerElementType = GetTowerElementType(tileType);
+
+        //newTile.ElementType = towerElementType;
+
         newTile.Setup(new Point(x, y), new Vector3(worldStart.x + tileSize * x, worldStart.y - tileSize * y, 0), map);
     }
+    //private Element GetTowerElementType(string tileType)
+    //{
+    //    // Mapear el tipo de elemento según el tipo de tile
+    //    switch (tileType)
+    //    {
+    //        case "0": // Tile de tipo TIERRA
+    //            return Element.TORRETIERRA;
+    //        case "1": // Tile de tipo AGUA
+    //            return Element.TORREAGUA;
+    //        case "2": // Tile de tipo VIENTO
+    //            return Element.TORREVIENTO;
+    //        default:
+    //            return Element.TORRETIERRA; // Valor predeterminado
+    //    }
+    //}
+    //private void PlaceTower(TileScript tile, Element towerElementType)
+    //{
+    //    if (tile != null && tile.IsEmpty && !tile.HasTower && tile.ElementType == towerElementType)
+    //    {
+    //        // Crear y colocar la torre en la posición de la tile
+    //        GameObject towerObject = Instantiate(towerPrefab, tile.transform.position, Quaternion.identity);
+    //        Tower newTower = towerObject.GetComponent<Tower>();
+    //        tile.HasTower = true;
+
+    //        // Configurar el tipo de elemento de la torre
+    //        newTower.ElementType = towerElementType;
+    //    }
+    //}
     private string[] ReadLevelText()
     {
         string mapa = "";
@@ -88,7 +121,15 @@ public class LevelManager : Singleton<LevelManager>
         }
         if(sceneNumber == 2)
         {
-            mapa = "Level2-1";
+            mapa = "Level1-2";
+        }
+        if (sceneNumber == 3)
+        {
+            mapa = "Level1-3";
+        }
+        if (sceneNumber == 4)
+        {
+            mapa = "Level1-4";
         }
 
         TextAsset bindData = Resources.Load(mapa) as TextAsset;
@@ -108,6 +149,16 @@ public class LevelManager : Singleton<LevelManager>
         {
             blueSpawn = new Point(2, 1);
             redSpawn = new Point(17, 17);//18,2 -2, 5
+        }
+        if (sceneNumber == 3)
+        {
+            blueSpawn = new Point(2, 6);
+            redSpawn = new Point(18, 14);//18,2 -2, 5
+        }
+        if (sceneNumber == 4)
+        {
+            blueSpawn = new Point(1, 4);
+            redSpawn = new Point(19, 4);//18,2 -2, 5
         }
         GameObject tmp = Instantiate(bluePortalPrefab, Tiles[blueSpawn].GetComponent<TileScript>().WorldPosition, Quaternion.identity);
         BluePortal = tmp.GetComponent<Spawn>();
@@ -133,4 +184,20 @@ public class LevelManager : Singleton<LevelManager>
     //    }
     //    return false;
     //}
+    public void ResetLevelManager()
+    {
+        // Reiniciar las variables necesarias del LevelManager
+        Tiles = null;
+        path = null;
+        BluePortal = null;
+        
+        // Restablecer otras variables según sea necesario
+
+        // Detener y eliminar las torres existentes
+        Tower[] towers = FindObjectsOfType<Tower>();
+        foreach (Tower tower in towers)
+        {
+            Destroy(tower.gameObject);
+        }
+    }
 }

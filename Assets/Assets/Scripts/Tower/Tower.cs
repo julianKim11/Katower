@@ -114,7 +114,7 @@ public abstract class Tower : MonoBehaviour
         mySpriteRenderer.enabled = !mySpriteRenderer.enabled;
         GameManager.Instance.UpdateUpgradeTip();
     }
-    private void Attack()
+    public virtual void Attack()
     {
         if(!canAttack)
         {
@@ -148,11 +148,11 @@ public abstract class Tower : MonoBehaviour
     {
         if(NextUpgrade != null)
         {
-            return string.Format("\nLevel: {0} \nDamage: {1} <color=#00ff00ff> +{3}</color> \nAttack Speed: {2} <color=#00ff00ff> -{4}</color>", Level, damage, attackCooldown, NextUpgrade.Damage, NextUpgrade.AttackSpeed);
+            return string.Format("\nNivel: {0} \nDanyo: {1} <color=#00ff00ff> +{3}</color> \nVelocidad de Ataque: {2} <color=#00ff00ff> -{4}</color>", Level, damage, attackCooldown, NextUpgrade.Damage, NextUpgrade.AttackSpeed);
         }
-        return string.Format("\nLevel: {0} \nDamage: {1} \nAttack Speed: {2}", Level, damage, attackCooldown);
+        return string.Format("\nNivel: {0} \nDanyo: {1} \nVel. de Ataque: {2}", Level, damage, attackCooldown);
     }
-    private void Shoot()
+    public virtual void Shoot()
     {
         Projectile projectile = GameManager.Instance.Pool.GetObject(projectileType).GetComponent<Projectile>();
 
@@ -183,18 +183,5 @@ public abstract class Tower : MonoBehaviour
             target = null;
         }
     }
-    //public void ApplyDamageBuff(int amount)
-    //{
-    //    damage += amount;
-    //}
     public abstract Debuff GetDebuff();
-
-    public void ApplyDamageBuff(int amount)
-    {
-        damage += amount;
-    }
-    public void RemoveDamageBuff(int amount)
-    {
-        damage -= amount;
-    }
 }

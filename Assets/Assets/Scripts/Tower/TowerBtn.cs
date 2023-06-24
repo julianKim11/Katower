@@ -40,15 +40,15 @@ public class TowerBtn : MonoBehaviour
         {
             case "Luchador":
                 LuchadorTower luchador = towerPrebaf.GetComponentInChildren<LuchadorTower>();
-                tooltip = string.Format("Luchador\nDaño: {0} \nVel. de ataque: {1}",luchador.Damage, luchador.AttackCooldown);
+                tooltip = string.Format("Luchador\nDanyo: {0} \nVel. de ataque: {1}",luchador.Damage, luchador.AttackCooldown);
                 break;
             case "Trampero":
                 TramperoTower trampero = towerPrebaf.GetComponentInChildren<TramperoTower>();
-                tooltip = string.Format("Trampero\nDaño: {0} \nVel. de ataque: {1}\nHabilidad: Deja trampas\nDaño de trampa: {2}", trampero.Damage, trampero.AttackCooldown, trampero.TrampDamage);
+                tooltip = string.Format("Trampero\nDanyo: {0} \nVel. de ataque: {1}\nHabilidad: Deja trampas\nDanyo de trampa: {2}", trampero.Damage, trampero.AttackCooldown, trampero.TrampDamage);
                 break;
             case "Enamorado":
                 EnamoradoTower enamorado = towerPrebaf.GetComponentInChildren<EnamoradoTower>();
-                tooltip = string.Format("Enamorado");
+                tooltip = string.Format("Enamorado\nDanyo: {0} \nVel. de ataque: {1}\nHabilidad: Cada 5 disparos \naumenta en 5 tu danyo.", enamorado.Damage, enamorado.AttackCooldown);
                 break;
 
         }

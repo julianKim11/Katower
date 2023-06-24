@@ -12,10 +12,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject UpgradePanel;
     [SerializeField] private Text sellText;
     [SerializeField] private Text upgradePrice;
-
+    private int sceneNumber;
     public TowerBtn ClickedBtn { get; set; }
     [SerializeField]
     private GameObject panelShopBtn;
+    [SerializeField]
+    private GameObject panelOpenClose;
     private Tower selectedTower;
 
     [Header("Menu")]
@@ -24,8 +26,8 @@ public class GameManager : Singleton<GameManager>
     public event CurrencyChanged Changed;
     public ObjectPool Pool { get; set; }
     private int currency;
-    private int wave = 0;
-    private int waveQ = 3;
+    private int wave = 1;
+    private int waveQ;
     private int lives;
     private int enemyIndex;
     private bool waveCompleted = false;
@@ -40,6 +42,8 @@ public class GameManager : Singleton<GameManager>
     private GameObject waveBtn;
     [SerializeField]
     private GameObject startBtn;
+
+    [SerializeField] private LevelManager levelManager;
 
     [Header("Tooltip")]
     [SerializeField] private GameObject statPanel;
@@ -58,6 +62,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Enemy")]
     List<Enemy> activeEnemies = new List<Enemy>();
 
+    private int moneyPerWave = 500;
     public bool waveActive
     {
         get
@@ -106,11 +111,13 @@ public class GameManager : Singleton<GameManager>
     }
     private void Start()
     {
+        sceneNumber = SceneManager.GetActiveScene().buildIndex;
         Lives = 10;
         Currency = 1500;
     }
     private void Update()
     {
+        Debug.Log(wave);
         //Debug.Log(wave);
         HandleEscape();
     }
@@ -146,7 +153,7 @@ public class GameManager : Singleton<GameManager>
         }
         selectedTower = tower;
         selectedTower.Select();
-        sellText.text = "+ " + (selectedTower.Price / 2).ToString() + " $";
+        sellText.text = "+" + (selectedTower.Price / 2).ToString() + "$";
         UpgradePanel.SetActive(true);
 
     }
@@ -170,10 +177,16 @@ public class GameManager : Singleton<GameManager>
     }
     public void StartWave()
     {
-        panelShopBtn.SetActive(false);
-        tutorialTowerPanel.SetActive(false);
+        if(sceneNumber == 1)
+        {
+            tutorialTowerPanel.SetActive(false);
+            waveText.text = string.Format("Oleada: <color=lime>{0}</color> de <color=lime>3</color>", wave);
+        }
+        else
+        {
+            waveText.text = string.Format("Oleada: <color=lime>{0}</color> de <color=lime>15</color>", wave);
+        }
         wave++;
-        waveText.text = string.Format("Oleada: <color=lime>{0}</color>", wave);
         waveBtn.SetActive(false);
         StartCoroutine(SpawnWave());
     }
@@ -181,25 +194,408 @@ public class GameManager : Singleton<GameManager>
     {
         //int enemyCount = 0;
         LevelManager.Instance.GeneratePath();
-        if (wave == 1)
+        switch (sceneNumber)
         {
-            waveQ = 3;
-            waveCount = 3;
-            enemyIndex = 0;
+            case 1:
+                if (sceneNumber == 1)
+                {
+                    if (wave == 1)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 2)
+                    {
+                        waveQ = 5;
+                        waveCount = 5;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 3)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 0;
+                    }
+                }
+                break;
+            case 2:
+                if (sceneNumber == 2)
+                {
+                    if (wave == 1)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 2)
+                    {
+                        waveQ = 5;
+                        waveCount = 5;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 3)
+                    {
+                        waveQ = 7;
+                        waveCount = 7;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 4)
+                    {
+                        waveQ = 6;
+                        waveCount = 6;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 5)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 6)
+                    {
+                        waveQ = 5;
+                        waveCount = 5;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 7)
+                    {
+                        waveQ = 6;
+                        waveCount = 6;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 8)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 9)
+                    {
+                        waveQ = 12;
+                        waveCount = 12;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 10)
+                    {
+                        waveQ = 16;
+                        waveCount = 16;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 11)
+                    {
+                        waveQ = 12;
+                        waveCount = 12;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 12)
+                    {
+                        waveQ = 16;
+                        waveCount = 16;
+                        enemyIndex = 2;
+                    }
+                    if (wave == 13)
+                    {
+                        waveQ = 5;
+                        waveCount = 5;
+                        enemyIndex = 1;
+                    }
+                    if (wave == 14)
+                    {
+                        waveQ = 7;
+                        waveCount = 7;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 15)
+                    {
+                        waveQ = 20;
+                        waveCount = 20;
+                        enemyIndex = 3;
+                    }
+                    //if (wave == 16)
+                    //{
+                    //    waveQ = 21;
+                    //    waveCount = 21;
+                    //    enemyIndex = 3;
+                    //}
+                    //if (wave == 17)
+                    //{
+                    //    waveQ = 30;
+                    //    waveCount = 30;
+                    //    enemyIndex = 2;
+                    //}
+                    //if (wave == 18)
+                    //{
+                    //    waveQ = 10;
+                    //    waveCount = 10;
+                    //    enemyIndex = 2;
+                    //}
+                    //if (wave == 19)
+                    //{
+                    //    waveQ = 30;
+                    //    waveCount = 30;
+                    //    enemyIndex = 3;
+                    //}
+                    //if (wave == 20)
+                    //{
+                    //    waveQ = 10;
+                    //    waveCount = 10;
+                    //    enemyIndex = 1;
+                    //}
+                }
+                break;
+            case 3:
+                if (sceneNumber == 3)
+                {
+                    if (wave == 1)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 2)
+                    {
+                        waveQ = 5;
+                        waveCount = 5;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 3)
+                    {
+                        waveQ = 7;
+                        waveCount = 7;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 4)
+                    {
+                        waveQ = 6;
+                        waveCount = 6;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 5)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 6)
+                    {
+                        waveQ = 5;
+                        waveCount = 5;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 7)
+                    {
+                        waveQ = 6;
+                        waveCount = 6;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 8)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 9)
+                    {
+                        waveQ = 12;
+                        waveCount = 12;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 10)
+                    {
+                        waveQ = 16;
+                        waveCount = 16;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 11)
+                    {
+                        waveQ = 12;
+                        waveCount = 12;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 12)
+                    {
+                        waveQ = 16;
+                        waveCount = 16;
+                        enemyIndex = 2;
+                    }
+                    if (wave == 13)
+                    {
+                        waveQ = 4;
+                        waveCount = 4;
+                        enemyIndex = 1;
+                    }
+                    if (wave == 14)
+                    {
+                        waveQ = 7;
+                        waveCount = 7;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 15)
+                    {
+                        waveQ = 20;
+                        waveCount = 20;
+                        enemyIndex = 3;
+                    }
+                    //if (wave == 16)
+                    //{
+                    //    waveQ = 21;
+                    //    waveCount = 21;
+                    //    enemyIndex = 3;
+                    //}
+                    //if (wave == 17)
+                    //{
+                    //    waveQ = 30;
+                    //    waveCount = 30;
+                    //    enemyIndex = 2;
+                    //}
+                    //if (wave == 18)
+                    //{
+                    //    waveQ = 10;
+                    //    waveCount = 10;
+                    //    enemyIndex = 2;
+                    //}
+                    //if (wave == 19)
+                    //{
+                    //    waveQ = 30;
+                    //    waveCount = 30;
+                    //    enemyIndex = 3;
+                    //}
+                    //if (wave == 20)
+                    //{
+                    //    waveQ = 10;
+                    //    waveCount = 10;
+                    //    enemyIndex = 1;
+                    //}
+                }
+                break;
+            case 4:
+                if (sceneNumber == 4)
+                {
+                    if (wave == 1)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 2)
+                    {
+                        waveQ = 5;
+                        waveCount = 5;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 3)
+                    {
+                        waveQ = 7;
+                        waveCount = 7;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 4)
+                    {
+                        waveQ = 6;
+                        waveCount = 6;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 5)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 6)
+                    {
+                        waveQ = 5;
+                        waveCount = 5;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 7)
+                    {
+                        waveQ = 6;
+                        waveCount = 6;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 8)
+                    {
+                        waveQ = 3;
+                        waveCount = 3;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 9)
+                    {
+                        waveQ = 12;
+                        waveCount = 12;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 10)
+                    {
+                        waveQ = 16;
+                        waveCount = 16;
+                        enemyIndex = 0;
+                    }
+                    if (wave == 11)
+                    {
+                        waveQ = 12;
+                        waveCount = 12;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 12)
+                    {
+                        waveQ = 16;
+                        waveCount = 16;
+                        enemyIndex = 2;
+                    }
+                    if (wave == 13)
+                    {
+                        waveQ = 4;
+                        waveCount = 4;
+                        enemyIndex = 1;
+                    }
+                    if (wave == 14)
+                    {
+                        waveQ = 7;
+                        waveCount = 7;
+                        enemyIndex = 3;
+                    }
+                    if (wave == 15)
+                    {
+                        waveQ = 20;
+                        waveCount = 20;
+                        enemyIndex = 3;
+                    }
+                    //if (wave == 16)
+                    //{
+                    //    waveQ = 21;
+                    //    waveCount = 21;
+                    //    enemyIndex = 3;
+                    //}
+                    //if (wave == 17)
+                    //{
+                    //    waveQ = 30;
+                    //    waveCount = 30;
+                    //    enemyIndex = 2;
+                    //}
+                    //if (wave == 18)
+                    //{
+                    //    waveQ = 10;
+                    //    waveCount = 10;
+                    //    enemyIndex = 2;
+                    //}
+                    //if (wave == 19)
+                    //{
+                    //    waveQ = 30;
+                    //    waveCount = 30;
+                    //    enemyIndex = 3;
+                    //}
+                    //if (wave == 20)
+                    //{
+                    //    waveQ = 10;
+                    //    waveCount = 10;
+                    //    enemyIndex = 1;
+                    //}
+                }
+                break;
         }
-        if (wave == 2)
-        {
-            waveQ = 5;
-            waveCount = 5;
-            enemyIndex = 0;
-        }
-        if (wave == 3)
-        {
-            waveQ = 3;
-            waveCount = 3;
-            enemyIndex = 0;
-        }
-        int enemiesOfType0 = 1; // Variable para llevar la cuenta de los enemigos de tipo 0 generados
+        int enemiesOfType0 = 0; // Variable para llevar la cuenta de los enemigos de tipo 0 generados
 
         for (int i = 0; i < waveQ; i++)
         {
@@ -213,44 +609,403 @@ public class GameManager : Singleton<GameManager>
                 case 1:
                     type = "BossRat";
                     break;
+                case 2:
+                    type = "RatAmarilla";
+                    break;
+                case 3:
+                    type = "RatAzul";
+                    break;
+                case 4:
+                    type = "RatAzul1";
+                    break;
             }
 
             Enemy enemy = Pool.GetObject(type).GetComponent<Enemy>();
-            if(wave == 1 || wave == 2) 
+            switch (sceneNumber)
             {
-                enemy.Spawn();
-                waveCount--;
-            }
-            if(wave == 3)
-            {
-                if (enemyIndex == 0 && enemiesOfType0 < 2) // Generar 2 enemigos de tipo 0
-                {
-                    enemiesOfType0++;
-                    enemy.Spawn();
-                }
-                else if (enemyIndex == 1 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
-                {
-                    enemyIndex = 1;
-                    enemy.Spawn();
-                }
-                waveCount--;
+                case 1:
+                    if (sceneNumber == 1)
+                    {
+                        if (wave == 1 || wave == 2)
+                        {
+                            enemy.Spawn();
+                            waveCount--;
+                        }
+                        if (wave == 3)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 2) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (sceneNumber == 2)
+                    {
+                        if (wave == 1 || wave == 2 || wave == 8 || wave == 9 || wave == 10 || wave == 13 || wave == 14 || wave == 15)
+                        {
+                            enemy.Spawn();
+                            waveCount--;
+                        }
+                        if (wave == 3)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 5) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 2 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 2;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 4)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 3) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 2 || enemiesOfType0 >= 3) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 2;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 5)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 2) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 6)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 4) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 3 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 3;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 7)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 5) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 11 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 11)
+                        {
+                            if (enemyIndex == 3 && enemiesOfType0 < 10) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 12)
+                        {
+                            if (enemyIndex == 2 && enemiesOfType0 < 15) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                    }
+                    break;
+                case 3:
+                    if (sceneNumber == 3)
+                    {
+                        if (wave == 1 || wave == 2 || wave == 8 || wave == 9 || wave == 10 || wave == 13 || wave == 14 || wave == 15)
+                        {
+                            enemy.Spawn();
+                            waveCount--;
+                        }
+                        if (wave == 3)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 5) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 2 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 2;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 4)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 3) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 2 || enemiesOfType0 >= 3) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 2;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 5)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 2) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 6)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 4) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 3 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 3;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 7)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 5) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 11 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 11)
+                        {
+                            if (enemyIndex == 3 && enemiesOfType0 < 10) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 12)
+                        {
+                            if (enemyIndex == 2 && enemiesOfType0 < 15) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (sceneNumber == 4)
+                    {
+                        if (wave == 1 || wave == 2 || wave == 8 || wave == 9 || wave == 10 || wave == 13 || wave == 14 || wave == 15)
+                        {
+                            enemy.Spawn();
+                            waveCount--;
+                        }
+                        if (wave == 3)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 5) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 2 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 2;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 4)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 3) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 2 || enemiesOfType0 >= 3) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 2;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 5)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 2) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 6)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 4) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 3 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 3;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 7)
+                        {
+                            if (enemyIndex == 0 && enemiesOfType0 < 5) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 11 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 11)
+                        {
+                            if (enemyIndex == 3 && enemiesOfType0 < 10) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 2) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                        if (wave == 12)
+                        {
+                            if (enemyIndex == 2 && enemiesOfType0 < 15) // Generar 2 enemigos de tipo 0
+                            {
+                                enemiesOfType0++;
+                                enemy.Spawn();
+                            }
+                            else if (enemyIndex == 1 || enemiesOfType0 >= 1) // Cambiar a enemyIndex = 1 después de generar los 2 enemigos de tipo 0
+                            {
+                                enemyIndex = 1;
+                                enemy.Spawn();
+                            }
+                            waveCount--;
+                        }
+                    }
+                    break;
             }
             activeEnemies.Add(enemy);
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
         }
+        yield return new WaitForSeconds(2.5f);
         if (waveCount == 0)
         {
             waveBtn.SetActive(true);
-            panelShopBtn.SetActive(true);
+            Currency += moneyPerWave;
         }
     }
     public void RemoveEnemy(Enemy enemy)
     {
         activeEnemies.Remove(enemy);
-        //Debug.Log("eliminado");
         
-        if (/*!waveActive && !gameOver*/wave == 3 && Lives > 0 && waveCount == 0)
+        if (wave == 3 && Lives > 0 && !waveActive && sceneNumber == 1)
+        {
+            Debug.Log("Ganaste");
+            WinScreen();
+            MainManager.Instance.WinYarm(2);
+        }
+        if (wave == 20 && Lives > 0 && waveCount == 0 && sceneNumber == 2)
+        {
+            Debug.Log("Ganaste");
+            WinScreen();
+            MainManager.Instance.WinYarm(2);
+        }
+        if (wave == 20 && Lives > 0 && waveCount == 0 && sceneNumber == 3)
+        {
+            Debug.Log("Ganaste");
+            WinScreen();
+            MainManager.Instance.WinYarm(2);
+        }
+        if (wave == 20 && Lives > 0 && waveCount == 0 && sceneNumber == 4)
         {
             Debug.Log("Ganaste");
             WinScreen();
@@ -263,6 +1018,7 @@ public class GameManager : Singleton<GameManager>
         {
             gameOver = true;
             gameOverMenu.SetActive(true);
+            //levelManager.ResetLevelManager();
         }
     }
     public void WinScreen()
@@ -271,6 +1027,7 @@ public class GameManager : Singleton<GameManager>
         {
             winScreen = true;
             winScreenMenu.SetActive(true);
+            //levelManager.ResetLevelManager();
         }
     }
     public void Restart()
@@ -281,15 +1038,20 @@ public class GameManager : Singleton<GameManager>
     public void MainMenu()
     {
         SceneManager.LoadScene(0);
+        //levelManager.ResetLevelManager();
     }
     public void StartGame()
     {
+        panelShopBtn.SetActive(true);
+        panelOpenClose.SetActive(false);
         LevelManager.Instance.GeneratePath();
         startBtn.SetActive(false);
         waveBtn.SetActive(true);
-        panelShopBtn.SetActive(true);
-        tutorialStartButton.SetActive(false);
-        tutorialTowerPanel.SetActive(true);
+        if(sceneNumber == 1)
+        {
+            tutorialStartButton.SetActive(false);
+            tutorialTowerPanel.SetActive(true);
+        }
     }
     public void ShowStats()
     {
@@ -309,11 +1071,11 @@ public class GameManager : Singleton<GameManager>
     {
         if(selectedTower != null)
         {
-            sellText.text = "+ " + (selectedTower.Price / 2).ToString() + " $";
+            sellText.text = "+" + (selectedTower.Price / 2).ToString() + "$";
             SetTooltipText(selectedTower.GetStats());
             if(selectedTower.NextUpgrade != null)
             {
-                upgradePrice.text = selectedTower.NextUpgrade.Price.ToString() + " $";
+                upgradePrice.text = selectedTower.NextUpgrade.Price.ToString() + "$";
             }
             else
             {
@@ -341,5 +1103,15 @@ public class GameManager : Singleton<GameManager>
                 selectedTower.Upgrade();
             }
         }
+    }
+    public void StorePanelShopOpen()
+    {
+        panelShopBtn.SetActive(true);
+        panelOpenClose.SetActive(false);
+    }
+    public void StorePanelShopClose()
+    {
+        panelShopBtn.SetActive(false);
+        panelOpenClose.SetActive(true);
     }
 }

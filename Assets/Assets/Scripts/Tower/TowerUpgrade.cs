@@ -9,12 +9,12 @@ public class TowerUpgrade
     public float DebuffDuration { get; private set; }
     public float AttackSpeed { get; private set; }
     public float TrampDamage { get; private set; }
+    public float PlusDamage { get; private set; }
 
-    public TowerUpgrade(int price, int damage, float debuffDuration, float attackSpeed)
+    public TowerUpgrade(int price, int damage, float attackSpeed)
     {
         this.Price = price;
         this.Damage = damage;
-        this.DebuffDuration = debuffDuration;
         this.AttackSpeed = attackSpeed;
     }
     public TowerUpgrade(int price, int damage, float debuffDuration, float attackSpeed, float trampDamage)
@@ -24,5 +24,12 @@ public class TowerUpgrade
         this.DebuffDuration = debuffDuration;
         this.AttackSpeed = attackSpeed;
         this.TrampDamage = trampDamage;
+    }
+    public TowerUpgrade(int price, int damage,float attackSpeed, float plusDamage)
+    {
+        this.Price = price;
+        this.Damage = damage;
+        this.AttackSpeed = attackSpeed;
+        this.PlusDamage = plusDamage;
     }
 }
